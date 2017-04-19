@@ -1,0 +1,35 @@
+{
+	"sdk_version": 1,
+	"name": "Client Tickets",
+	"namespace": "Docs\\ClientTickets",
+	"description": "Display a list of a client's most recent tickets on the client profile page.",
+	"version": "1.0",
+	"modules": {
+		"client_tickets_brands": {
+			"component": "brands",
+			"label": "Client Tickets Brands",
+			"description": "Brands permitted to execute plugin."
+		},
+		"client_tickets_usage_datasource": {
+			"component": "datasources",
+			"label": "Client Tickets Usage Datasource",
+			"description": "Usage plans permitted to use this datasource."
+		}
+	},
+	"config_items": {
+		"limit": {
+			"scope": ["module", "entity"],
+			"modules": ["client_tickets_brands"],
+			"label": "Limit",
+			"type": "text",
+			"default": 10
+		},
+		"usage": {
+			"scope": ["module", "entity"],
+			"modules": ["client_tickets_usage_datasource"],
+			"label": "Usage",
+			"type": "text",
+			"default": 0
+		}
+	}
+}
