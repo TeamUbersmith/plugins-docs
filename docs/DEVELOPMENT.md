@@ -187,7 +187,7 @@ return $output;
 ## Datasource
 A datasource is a specialized plugin module whose purpose is to collect usage metrics for defined resources.  Any entity or device can be considered a resource of a datasource.  The definition and it's manner of data retrieval is left entirely up to the author of the plugin.  For example, a datasource can define switch ports as a resource to collect bandwidth bits -OR- an SMTP server as a resource to tally outbound emails.  Usage metrics collected are used by an assigned Service Plan allowing relevant Services to calculate a billable cost.
 
-A datasource requires a class with annotations. For more information about the functions available to use, [see Datasources](). 
+A datasource requires a class implementing the `UbersmithSDK\Usage\Data\Source` interface as well as some annotations. For more information about the functions available to use, [see Datasources](). 
 
 To implement a datasource you need to set a namespace and use Ubersmith SDK packages `Usage` and `Parameter`:
 ```php
