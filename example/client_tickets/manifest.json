@@ -1,6 +1,7 @@
 {
 	"sdk_version": 1,
 	"name": "Client Tickets",
+	"identifier": "com.ubersmith.docs.clienttickets",
 	"namespace": "Docs\\ClientTickets",
 	"description": "Display a list of a client's most recent tickets on the client profile page.",
 	"version": "1.0",
