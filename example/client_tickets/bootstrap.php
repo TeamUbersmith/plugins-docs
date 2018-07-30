@@ -7,6 +7,7 @@ use UbersmithSDK\Error;
 use UbersmithSDK\GUI;
 use UbersmithSDK\Parameter;
 use UbersmithSDK\Util;
+use UbersmithSDK\Error\SDKException;
 
 use function UbersmithSDK\Util\FormatDateTime as DT;
 use function UbersmithSDK\Util\I18n as I18n;
@@ -46,7 +47,7 @@ function client_ticket_list(Parameter\Source\Client $client, Parameter\Plugin $p
 	));
 
 	if (empty($tickets)) {
-		Error\Exception(I18nf('No %s found', I18n('tickets')));
+		throw new SDKException(I18nf('No %s found', I18n('tickets')));
 	}
 
 	$output = '
