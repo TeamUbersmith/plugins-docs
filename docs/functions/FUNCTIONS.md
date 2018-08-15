@@ -2,22 +2,6 @@
 
 The following is a list of functions that have been defined throughout Ubersmith:
 
-## Error functions
-
-### UbersmithSDK\Error\Exception
-
-Raise an exception.
-
-**Parameters:**
-
-| Parameter | Description |
-| --- | --- |
-| `string $error` | Error message. |
-| `string $details` | Verbose error details. |
-| `string $previous` | Previous SDKException (used for exception chaining) |
-
-**Return value:** `void`
-
 ## GUI functions
 
 ### UbersmithSDK\GUI\ConfirmLink
