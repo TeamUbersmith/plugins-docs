@@ -100,7 +100,7 @@ use function UbersmithSDK\Util\I18nf as I18nf;
 ```
 
 ## SDK API
-The Ubersmith Plugin SDK also wraps the Ubersmith API endpoints to transact with Ubersmith. An API endpoint addressable by URL query parameter `method=section.some_action` is accesible through the SDK as a function in the form of `API\Section\Some_Action()`. API parameters are passed to the SDK API via an associative array where the keys are the API parameters.  SDK API functions are executed internally without going through a full HTTP stack call.  For more information about using the Ubersmith API, see [Using the Ubersmith API](https://docs.ubersmith.com/display/UbersmithDocumentation/Using+the+Ubersmith+API).
+The Ubersmith Plugin SDK also wraps the Ubersmith API endpoints to transact with Ubersmith. An API endpoint addressable by URL query parameter `method=section.some_action` is accessible through the SDK as a function in the form of `API\Section\Some_Action()`. API parameters are passed to the SDK API via an associative array where the keys are the API parameters.  SDK API functions are executed internally without going through a full HTTP stack call.  For more information about using the Ubersmith API, see [Using the Ubersmith API](https://docs.ubersmith.com/display/UbersmithDocumentation/Using+the+Ubersmith+API).
 
 For our example, we want to use the `API\Support\Ticket_List` function to list the client’s most recent tickets in descending order. We also want to display an error if no tickets are found.
 ```php
