@@ -46,7 +46,7 @@ function client_ticket_list(Parameter\Source\Client $client, Parameter\Plugin $p
 	));
 
 	if (empty($tickets)) {
-		Error\Exception(I18nf('No %s found', I18n('tickets')));
+		throw new Error\SDKException(I18nf('No %s found', I18n('tickets')));
 	}
 
 	$output = '
