@@ -209,14 +209,14 @@ class UsageDatasource implements Usage\Data\Source
 }
 ```
 
-Datasources also require a few methods to be implemented in order to return relevant information.
+Datasources require a few methods to be implemented in order to return relevant information.
 
-The `get_supported_resources` method specifies what resources the datasource uses and the units of measure. In this case we have a resource for ticket time with the units `minutes` and `hours`.
+The `get_supported_resources` method specifies what [resources](#resource_types) the datasource uses and the units of measure. In this case we have a resource for ticket time with the units `minutes` and `hours`.
 ```php
 public function get_supported_resources()
 {
 	return array(
-		new Usage\DefaultResource('ticket_time', 'Ticket Time', array(
+		new Usage\TieredResource('ticket_time', 'Ticket Time', array(
 			'min' => 'minutes',
 			'hr'  => 'hours',
 		)),
@@ -264,5 +264,26 @@ Finally, the datasource class will need to be included in the bootstrap file:
 // Datasource
 require_once 'class.usage_datasource.php';
 ```
+
+### <a name="abcd"></a> Resource types
+
+When implementing `get_supported_resources` two types of resources can be returned.
+
+*TieredResource*
+
+The tiered resource requires a name, an identifier and an array of units that can be selected by users.
+This type of resource will allow the user to define usage tiers that will be used for price calculation.
+
+When using this resource type, the `fetch` method will return amounts in a unit that can then be converted to the selected unit by the `convert_amount` method.
+
+*MarkupResource*
+
+The markup resource requires only a name and an identifier.
+This type of resource is used when the external system already calculates the price of usage. It will allow
+the user to select a markup, either as a percentage or a fixed amount, to be added to the price calculated by the external system.
+
+When using this resource type, the `fetch` method will return prices directly.
+
+
 
 [Go back](../README.md)
