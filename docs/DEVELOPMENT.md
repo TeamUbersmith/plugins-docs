@@ -209,7 +209,7 @@ class UsageDatasource implements Usage\Data\Source
 }
 ```
 
-Datasources also require a few methods to be implemented in order to return relevant information.
+Datasources require a few methods to be implemented in order to return relevant information.
 
 The `get_supported_resources` method specifies what [resources](#resource_types) the datasource uses and the units of measure. In this case we have a resource for ticket time with the units `minutes` and `hours`.
 ```php
@@ -267,11 +267,11 @@ require_once 'class.usage_datasource.php';
 
 ### <a name="abcd"></a> Resource types
 
-When implementing `get_supported_resources` 2 types of resources can be returned.
+When implementing `get_supported_resources` two types of resources can be returned.
 
 *TieredResource*
 
-The tiered resource requires a name, an identifier and an array of units that can be selected by the users.
+The tiered resource requires a name, an identifier and an array of units that can be selected by users.
 This type of resource will allow the user to define usage tiers that will be used for price calculation.
 
 When using this resource type, the `fetch` method will return amounts in a unit that can then be converted to the selected unit by the `convert_amount` method.
