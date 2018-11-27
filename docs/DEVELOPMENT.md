@@ -1,6 +1,6 @@
 # Developing a plugin
 
-A plugin is a collection of files, functions, hooks, SDK methods and calls, and Datasources. Plugins reside in a subdirectory under the `plugins/` directory on the Ubersmith server.
+A plugin is a collection of files, functions, hooks, SDK methods and calls, and Datasources. Plugins reside in a subdirectory under the `plugins/` directory on the Ubersmith server. To install a plugin, add the plugin file to the plugins directory on your Ubersmith server.
 
 To illustrate abilities, we will develop an example plugin. The plugin is called **Client Tickets** and it will add a new section to the Client Profile page to display a list of the client's most recent tickets. You can download the full plugin [here](../example/client_tickets.zip).
 
