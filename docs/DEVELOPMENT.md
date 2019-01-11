@@ -410,7 +410,7 @@ function client_ticket_list(Parameter\Source\Client $client, Parameter\Plugin $p
 - Any text in any log entry is searchable.
 
 ###### Clearing the log view
-- You can either use the `Clear Log` button, `ESC` key or `Command + K` or `Alt + K`.
+- You can either use the `Clear Log` button, `ESC` key, and `Command + K` on Mac or `Ctrl + K` on Windows.
 
 
 [Go back](../README.md)
