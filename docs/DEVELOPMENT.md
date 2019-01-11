@@ -327,6 +327,7 @@ Plugin Logger is available for use to track what PluginSystem hooks are being fi
 
 #### Setup
 - In your `config.ini.php` file under `[ubersmith]` block. Add the following line.
+
     ```
     plugin_logger_redis_path="tcp://redis:6379?database=3"
     ```
@@ -340,7 +341,7 @@ Plugin Logger is available for use to track what PluginSystem hooks are being fi
 | `message` | message is composed of `[event_origin] event_description` |
 | `uid` | uid represents a single execution flow. For example, if you do a text search with a uid, the logger will display a group of events which transpired in the single execution. |
 | `event` | `hook_type` and `hook_name` related to the event. |
-| `plugin` | `identifier` from specified in manifest.json, the plugin's `module_name` and `function` related to the event. |
+| `plugin` | `identifier` from the plugin's manifest.json, the plugin's `module_name` and `function` related to the event. |
 | `hostname` | For Ubersmith application with multiple web heads, this can act as a supplement to `uid`. |
 
 #### Log Entry Types and Colors
@@ -350,9 +351,10 @@ Plugin Logger is available for use to track what PluginSystem hooks are being fi
 
 #### Usage
 - All PluginSystem hook executions are automatically tracked, both from PluginSystem and from plugins. All log entries will be in chronological order.
-- You can also use UbersmithSDK\Debug\Log function to log anything from plugins.
+- You can also use `UbersmithSDK\Debug\Log` function to log anything from plugins.
+
+`UbersmithSDK\Debug\Log` Example
 ```diff
-// UbersmithSDK\Debug\Log Example
 <?php
 
 namespace Docs\ClientTickets;
