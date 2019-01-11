@@ -111,7 +111,7 @@ Generate a form end tag.
 
 Generate a form start tag.
 
-**Parameters:**gst
+**Parameters:**
 
 | Parameter | Description |
 | --- | --- |
