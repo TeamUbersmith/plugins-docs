@@ -4,18 +4,41 @@ A plugin is a collection of files, functions, hooks, SDK methods and calls, and 
 
 To illustrate abilities, we will develop an example plugin. The plugin is called **Client Tickets** and it will add a new section to the Client Profile page to display a list of the client's most recent tickets. You can download the full plugin [here](../example/client_tickets.zip).
 
-## Files
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+**Table of Contents**
+
+- [Requirements](#requirements)
+  - [Manifest file](#manifest-file)
+  - [Bootstrap file](#bootstrap-file)
+  - [Optional files](#optional-files)
+- [SDK Usage](#sdk-usage)
+  - [SDK Functions](#sdk-functions)
+  - [SDK API](#sdk-api)
+- [Writing your plugin](#writing-your-plugin)
+  - [Hooks](#hooks)
+  - [Datasource](#datasource)
+  - [Resource types](#resource-types)
+    - [TieredResource](#tieredresource)
+    - [MarkupResource](#markupresource)
+- [Development Tools](#development-tools)
+  - [Plugin Logger](#plugin-logger)
+    - [Setup](#setup)
+    - [Log Entry Definitions](#log-entry-definitions)
+    - [Log Entry Types and Colors](#log-entry-types-and-colors)
+    - [Usage](#usage)
+        - [View options](#view-options)
+        - [Filters](#filters)
+        - [Text search](#text-search)
+        - [Clearing the log view](#clearing-the-log-view)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
+## Requirements
 A plugin requires a `manifest.json` and `bootstrap.php` file.
 
-### Optional
-* Additional PHP files that the bootstrap file includes.
-* Datasource classes.
-* JavaScript files.
-* CSS files.
-* Any additional files the plugin needs (for example, images).
-
-## Manifest file
-The manifest file, `manifest.json`, is a JSON file that specifies details about the plugin such as name, version, and other configuration details. For more information about the manifest file, [see Manifest file]().
+### Manifest file
+The manifest file, `manifest.json`, is a JSON file that specifies details about the plugin such as name, version, and other configuration details.
 
 Below is our example plugin manifest file:
 ```json
@@ -58,7 +81,7 @@ Below is our example plugin manifest file:
 
 For more information about the manifest file, see [Manifest file](manifest/MANIFEST.md).
 
-## Bootstrap file
+### Bootstrap file
 The bootstrap file, `bootstrap.php`, is a PHP file the plugin executes first. This file contains functions that implement defined hooks throughout Ubersmith. The bootstrap can also include other PHP files, to divide the code into multiple PHP files.  For more info, [see Bootstrap]().
 
 The bootstrap file requires a namespace:
@@ -66,7 +89,16 @@ The bootstrap file requires a namespace:
 namespace Docs\ClientTickets;
 ```
 
-## SDK Functions
+### Optional files
+* Additional PHP files that the bootstrap file includes.
+* Datasource class files.
+* JavaScript files.
+* CSS files.
+* Any additional files the plugin needs (for example, images).
+
+## SDK Usage
+
+### SDK Functions
 Various Ubersmith SDK functions are available, such as formatting a number in a currency format.  For more information about the functions available to use, [see Functions](functions/FUNCTIONS.md).
 ```php
 UbersmithSDK\Util\FormatCurrency(100);
@@ -99,7 +131,7 @@ use function UbersmithSDK\Util\I18n as I18n;
 use function UbersmithSDK\Util\I18nf as I18nf;
 ```
 
-## SDK API
+### SDK API
 The Ubersmith Plugin SDK also wraps the Ubersmith API endpoints to transact with Ubersmith. An API endpoint addressable by URL query parameter `method=section.some_action` is accessible through the SDK as a function in the form of `API\Section\Some_Action()`. API parameters are passed to the SDK API via an associative array where the keys are the API parameters.  SDK API functions are executed internally without going through a full HTTP stack call.  For more information about using the Ubersmith API, see [Using the Ubersmith API](https://docs.ubersmith.com/display/UbersmithDocumentation/Using+the+Ubersmith+API).
 
 For our example, we want to use the `API\Support\Ticket_List` function to list the client’s most recent tickets in descending order. We also want to display an error if no tickets are found.
@@ -118,10 +150,12 @@ if (empty($tickets)) {
 }
 ```
 
-## Hooks
+## Writing your plugin
+
+### Hooks
 Various hooks are defined in areas where Ubersmith functionality can be extended. A hook requires a function with an annotation describing the hook you want to implement. For more information about the hooks available for use, see [Hooks](hooks/HOOKS.md).
 
-For our example, we use the `View\Client\Summary` hook to display a new section on the Client Profile page. This is done by using the `client_ticket_list` function with an annotation above it refering to the hook. 
+For our example, we use the `View\Client\Summary` hook to display a new section on the Client Profile page. This is done by using the `client_ticket_list` function with an annotation above it refering to the hook.
 
 Parameters for additional details are also available, such as the respective source (`$client` in this case) and the respective `$plugin`:
 ```php
@@ -184,10 +218,10 @@ $output .= '
 return $output;
 ```
 
-## Datasource
+### Datasource
 A datasource is a specialized plugin module whose purpose is to collect usage metrics for defined resources.  Any entity or device can be considered a resource of a datasource.  The definition and it's manner of data retrieval is left entirely up to the author of the plugin.  For example, a datasource can define switch ports as a resource to collect bandwidth bits -OR- an SMTP server as a resource to tally outbound emails.  Usage metrics collected are used by an assigned Service Plan allowing relevant Services to calculate a billable cost.
 
-A datasource requires a class implementing the `UbersmithSDK\Usage\Data\Source` interface as well as some annotations. For more information about the functions available to use, [see Datasources](). 
+A datasource requires a class implementing the `UbersmithSDK\Usage\Data\Source` interface as well as some annotations. For more information about the functions available to use, [see Datasources]().
 
 To implement a datasource you need to set a namespace and use Ubersmith SDK packages `Usage` and `Parameter`:
 ```php
@@ -265,18 +299,18 @@ Finally, the datasource class will need to be included in the bootstrap file:
 require_once 'class.usage_datasource.php';
 ```
 
-### <a name="abcd"></a> Resource types
+### Resource types
 
 When implementing `get_supported_resources` two types of resources can be returned.
 
-*TieredResource*
+#### TieredResource
 
 The tiered resource requires a name, an identifier and an array of units that can be selected by users.
 This type of resource will allow the user to define usage tiers that will be used for price calculation.
 
 When using this resource type, the `fetch` method will return amounts in a unit that can then be converted to the selected unit by the `convert_amount` method.
 
-*MarkupResource*
+#### MarkupResource
 
 The markup resource requires only a name and an identifier.
 This type of resource is used when the external system already calculates the price of usage. It will allow
@@ -284,6 +318,97 @@ the user to select a markup, either as a percentage or a fixed amount, to be add
 
 When using this resource type, the `fetch` method will return prices directly.
 
+## Development Tools
+
+### Plugin Logger
+Plugin Logger is available for use to track what PluginSystem hooks are being fired and how your plugins are reacting to them.
+- Currently, the number of log entries are limited to the latest `10,000` events.
+- At least one plugin must be installed and set up with a module instance configuration.
+
+#### Setup
+- In your `config.ini.php` file under `[ubersmith]` block. Add the following line.
+    ```
+    plugin_logger_redis_path="tcp://redis:6379?database=3"
+    ```
+- In your Ubersmith application, go to _Settings_, _Plugins_, _Settings_ and enable Plugin Logger. Go back to _Plugins_ page.
+- Now the logger is enabled and you should see _Go to Logger_ link to access the logger.
+
+#### Log Entry Definitions
+| Key | Value |
+| --- | --- |
+| `datetime` | datetime of log event. |
+| `message` | message is composed of `[event_origin] event_description` |
+| `uid` | uid represents a single execution flow. For example, if you do a text search with a uid, the logger will display a group of events which transpired in the single execution. |
+| `event` | `hook_type` and `hook_name` related to the event. |
+| `plugin` | `identifier` from specified in manifest.json, the plugin's `module_name` and `function` related to the event. |
+| `hostname` | For Ubersmith application with multiple web heads, this can act as a supplement to `uid`. |
+
+#### Log Entry Types and Colors
+- A log message with ![#008000](https://placehold.it/15/008000/000000?text=+) `GREEN` background color indicates a successful execution of a plugin function.
+- A log message with ![#f03c15](https://placehold.it/15/f03c15/000000?text=+) `RED` background color indicates a successful execution of a plugin function.
+- A log from `SDK\Debug` function will have ![#f09623](https://placehold.it/15/f09623/000000?text=+) `ORANGE` borders.
+
+#### Usage
+- All PluginSystem hook executions are automatically tracked, both from PluginSystem and from plugins. All log entries will be in chronological order.
+- You can also use UbersmithSDK\Debug\Log function to log anything from plugins.
+```diff
+// UbersmithSDK\Debug\Log Example
+<?php
+
+namespace Docs\ClientTickets;
+
+use UbersmithSDK\API;
+use UbersmithSDK\Error;
+use UbersmithSDK\GUI;
+use UbersmithSDK\Parameter;
+use UbersmithSDK\Util;
++ use UbersmithSDK\Debug;
+
+use function UbersmithSDK\Util\FormatDateTime as DT;
+use function UbersmithSDK\Util\I18n as I18n;
+use function UbersmithSDK\Util\I18nf as I18nf;
+
+// Datasource
+require_once 'class.usage_datasource.php';
+/**
+ * Client Profile Ticket List
+ *
+ * @Hook View\Client\Summary
+ */
+function client_ticket_list(Parameter\Source\Client $client, Parameter\Plugin $plugin)
+{
+	$config = $plugin->config;
+
+	$tickets = API\Support\Ticket_List(array(
+		'client_id' => $client->clientid,
+		'order_by'  => 'ticket_id',
+		'direction' => 'desc',
+		'limit'     => $config->limit,
+	));
+
+	if (empty($tickets)) {
+		throw new Error\SDKException(I18nf('No %s found', I18n('tickets')));
+	}
+
++   Debug\Log('Simple string', 'a simple log');
++   Debug\Log('Log object', $config);
++   Debug\Log('Log anything', [$config, $tickets, 9999999999, 'qweqwe']);
+
+    ...
+}
+```
+
+###### View options
+- Toggle collapsed/expanded view modes with `view collapsed/expanded` button.
+
+###### Filters
+- You can filter per plugin and/or per usage on left sidebar navigation radio buttons.
+
+###### Text search
+- Any text in any log entry is searchable.
+
+###### Clearing the log view
+- You can either use the `Clear Log` button, `ESC` key or `Command + K` or `Alt + K`.
 
 
 [Go back](../README.md)

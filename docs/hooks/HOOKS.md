@@ -2,6 +2,63 @@
 
 The following is a list of hooks that have been defined throughout Ubersmith:
 
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+**Table of Contents**
+
+- [Event hooks](#event-hooks)
+  - [Event\Client\AfterCreate](#eventclientaftercreate)
+  - [Event\Client\AfterDeactivate](#eventclientafterdeactivate)
+  - [Event\Client\AfterEdit](#eventclientafteredit)
+  - [Event\Client\AfterReactivate](#eventclientafterreactivate)
+  - [Event\Client\BeforeCreate](#eventclientbeforecreate)
+  - [Event\Client\BeforeDeactivate](#eventclientbeforedeactivate)
+  - [Event\Client\BeforeEdit](#eventclientbeforeedit)
+  - [Event\Client\BeforeReactivate](#eventclientbeforereactivate)
+  - [Event\Device\AfterCreate](#eventdeviceaftercreate)
+  - [Event\Device\AfterDelete](#eventdeviceafterdelete)
+  - [Event\Device\AfterEdit](#eventdeviceafteredit)
+  - [Event\Device\AfterIPAssignmentAdded](#eventdeviceafteripassignmentadded)
+  - [Event\Device\AfterIPAssignmentEdited](#eventdeviceafteripassignmentedited)
+  - [Event\Device\AfterIPAssignmentJoined](#eventdeviceafteripassignmentjoined)
+  - [Event\Device\AfterIPAssignmentRemoved](#eventdeviceafteripassignmentremoved)
+  - [Event\Device\AfterIPAssignmentSplit](#eventdeviceafteripassignmentsplit)
+  - [Event\Device\BeforeCreate](#eventdevicebeforecreate)
+  - [Event\Device\BeforeDelete](#eventdevicebeforedelete)
+  - [Event\Device\BeforeEdit](#eventdevicebeforeedit)
+  - [Event\Service\AfterCancel](#eventserviceaftercancel)
+  - [Event\Service\AfterCreate](#eventserviceaftercreate)
+  - [Event\Service\AfterDeactivate](#eventserviceafterdeactivate)
+  - [Event\Service\AfterEdit](#eventserviceafteredit)
+  - [Event\Service\AfterInvoice](#eventserviceafterinvoice)
+  - [Event\Service\AfterPayment](#eventserviceafterpayment)
+  - [Event\Service\AfterRenew](#eventserviceafterrenew)
+  - [Event\Service\AfterSuspend](#eventserviceaftersuspend)
+  - [Event\Service\AfterUncancel](#eventserviceafteruncancel)
+  - [Event\Service\AfterUnsuspend](#eventserviceafterunsuspend)
+  - [Event\Service\BeforeCancel](#eventservicebeforecancel)
+  - [Event\Service\BeforeCreate](#eventservicebeforecreate)
+  - [Event\Service\BeforeDeactivate](#eventservicebeforedeactivate)
+  - [Event\Service\BeforeEdit](#eventservicebeforeedit)
+  - [Event\Service\BeforeRenew](#eventservicebeforerenew)
+  - [Event\Service\BeforeSuspend](#eventservicebeforesuspend)
+  - [Event\Service\BeforeUncancel](#eventservicebeforeuncancel)
+  - [Event\Service\BeforeUnsuspend](#eventservicebeforeunsuspend)
+  - [Event\Service\Provision](#eventserviceprovision)
+  - [Event\Service\Start](#eventservicestart)
+- [View hooks](#view-hooks)
+  - [View\Client\DashboardMenuItems](#viewclientdashboardmenuitems)
+  - [View\Client\Summary](#viewclientsummary)
+  - [View\Device\Actions](#viewdeviceactions)
+  - [View\Device\Summary](#viewdevicesummary)
+  - [View\Order\Summary](#viewordersummary)
+  - [View\Sales\DashboardMenuItems](#viewsalesdashboardmenuitems)
+  - [View\Service\InvoicePdfSummary](#viewserviceinvoicepdfsummary)
+  - [View\Service\InvoiceSummary](#viewserviceinvoicesummary)
+  - [View\Service\Summary](#viewservicesummary)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
 ## Event hooks
 
 ### Event\Client\AfterCreate
