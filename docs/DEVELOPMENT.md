@@ -393,9 +393,10 @@ function client_ticket_list(Parameter\Source\Client $client, Parameter\Plugin $p
 		throw new Error\SDKException(I18nf('No %s found', I18n('tickets')));
 	}
 
-+   Debug\Log('Simple string', 'a simple log');
-+   Debug\Log('Log object', $config);
-+   Debug\Log('Log anything', [$config, $tickets, 9999999999, 'qweqwe']);
++   Debug\Log('Simple string');
++   Debug\Log($config);
++   Debug\Log([$config, $tickets, 9999999999, 'logging array of mixed data']);
++   Debug\Log($tickets, 'logging $tickets with log message');
 
     ...
 }

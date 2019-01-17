@@ -828,9 +828,9 @@ For use with Plugin Logger. Log anything from plugin files.
 
 | Parameter | Description |
 | --- | --- |
+| `array|object|string $logItem` | string|array|object or array of mixed data type. |
 | `string $message` | Log message. |
-| `array|object|string $context` | Any data to log. |
 
-**Return value:** `Null`. Output will go to Plugin Logger.
+**Return value:** None. Output will go to [Plugin Logger](../DEVELOPMENT.md#plugin-logger).
 
 [Go back](../DEVELOPMENT.md)
