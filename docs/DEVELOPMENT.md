@@ -405,7 +405,7 @@ function client_ticket_list(Parameter\Source\Client $client, Parameter\Plugin $p
 - Toggle collapsed/expanded view modes with `view collapsed/expanded` button.
 
 ###### Filters
-- You can filter per plugin and/or per usage on left sidebar navigation radio buttons.
+- You can filter per plugin and/or per usage with left sidebar navigation radio buttons.
 
 ###### Text Search
 - Any text in any log entry is searchable.
