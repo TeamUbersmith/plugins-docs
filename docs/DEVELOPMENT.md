@@ -393,10 +393,8 @@ function client_ticket_list(Parameter\Source\Client $client, Parameter\Plugin $p
 	}
 
 +   Debug\Log('Simple string');
-+   Debug\Log($config);
-+   Debug\Log([$config, $tickets, 9999999999, 'logging array of mixed data']);
-+   Debug\Log($tickets, 'logging $tickets with log message');
-
++   Debug\Log('my message', $config);
++   Debug\Log('my message2', [$config, $tickets, 9999999999, 'logging array of mixed data']);
     ...
 }
 ```

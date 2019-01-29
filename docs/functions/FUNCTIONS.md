@@ -825,10 +825,10 @@ For use with Plugin Logger. Log anything from plugin files.
 
 **Parameters:**
 
-| Parameter | Description |
-| --- | --- |
-| `array|object|string $logItem` | string|array|object or array of mixed data type. |
-| `string $message` | Log message. |
+| Parameter | Description | Required |
+| --- | --- | --- |
+| `string $message` | Log message. | Yes |
+| `array|object|string $logItem` | string \| array \| object or array of mixed data type. | No |
 
 **Return value:** None. Output will go to [Plugin Logger](../DEVELOPMENT.md#plugin-logger).
 
