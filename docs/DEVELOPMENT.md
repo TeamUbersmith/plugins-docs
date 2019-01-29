@@ -7,7 +7,6 @@ To illustrate abilities, we will develop an example plugin. The plugin is called
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 <!-- https://github.com/thlorenz/doctoc use this tool to update -->
-**Table of Contents**
 
 - [Requirements](#requirements)
   - [Manifest file](#manifest-file)
@@ -16,10 +15,10 @@ To illustrate abilities, we will develop an example plugin. The plugin is called
 - [SDK Usage](#sdk-usage)
   - [SDK Functions](#sdk-functions)
   - [SDK API](#sdk-api)
-- [Writing your plugin](#writing-your-plugin)
+- [Writing your Plugin](#writing-your-plugin)
   - [Hooks](#hooks)
   - [Datasource](#datasource)
-  - [Resource types](#resource-types)
+  - [Resource Types](#resource-types)
     - [TieredResource](#tieredresource)
     - [MarkupResource](#markupresource)
 - [Development Tools](#development-tools)
@@ -28,10 +27,10 @@ To illustrate abilities, we will develop an example plugin. The plugin is called
     - [Log Entry Definitions](#log-entry-definitions)
     - [Log Entry Types and Colors](#log-entry-types-and-colors)
     - [Usage](#usage)
-        - [View options](#view-options)
+        - [View Options](#view-options)
         - [Filters](#filters)
-        - [Text search](#text-search)
-        - [Clearing the log view](#clearing-the-log-view)
+        - [Text Search](#text-search)
+        - [Clearing the Log View](#clearing-the-log-view)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
@@ -91,11 +90,11 @@ namespace Docs\ClientTickets;
 ```
 
 ### Optional files
-* Additional PHP files that the bootstrap file includes.
-* Datasource class files.
-* JavaScript files.
-* CSS files.
-* Any additional files the plugin needs (for example, images).
+* Additional PHP files that the bootstrap file includes
+* Datasource class files
+* JavaScript files
+* CSS files
+* Any additional files the plugin needs (for example, images)
 
 ## SDK Usage
 
@@ -151,7 +150,7 @@ if (empty($tickets)) {
 }
 ```
 
-## Writing your plugin
+## Writing your Plugin
 
 ### Hooks
 Various hooks are defined in areas where Ubersmith functionality can be extended. A hook requires a function with an annotation describing the hook you want to implement. For more information about the hooks available for use, see [Hooks](hooks/HOOKS.md).
@@ -222,7 +221,7 @@ return $output;
 ### Datasource
 A datasource is a specialized plugin module whose purpose is to collect usage metrics for defined resources.  Any entity or device can be considered a resource of a datasource.  The definition and it's manner of data retrieval is left entirely up to the author of the plugin.  For example, a datasource can define switch ports as a resource to collect bandwidth bits -OR- an SMTP server as a resource to tally outbound emails.  Usage metrics collected are used by an assigned Service Plan allowing relevant Services to calculate a billable cost.
 
-A datasource requires a class implementing the `UbersmithSDK\Usage\Data\Source` interface as well as some annotations. For more information about the functions available to use, [see Datasources]().
+A datasource requires a class implementing the `UbersmithSDK\Usage\Data\Source` interface as well as some annotations. For more information about the available functions, [see Datasources]().
 
 To implement a datasource you need to set a namespace and use Ubersmith SDK packages `Usage` and `Parameter`:
 ```php
@@ -300,7 +299,7 @@ Finally, the datasource class will need to be included in the bootstrap file:
 require_once 'class.usage_datasource.php';
 ```
 
-### Resource types
+### Resource Types
 
 When implementing `get_supported_resources` two types of resources can be returned.
 
@@ -322,7 +321,7 @@ When using this resource type, the `fetch` method will return prices directly.
 ## Development Tools
 
 ### Plugin Logger
-Plugin Logger is available for use to track what PluginSystem hooks are being fired and how your plugins are reacting to them.
+Plugin Logger tracks what PluginSystem hooks are being fired and how your plugins are reacting to them.
 - Currently, the number of log entries are limited to the latest `10,000` events.
 - At least one plugin must be installed and set up with a module instance configuration.
 
@@ -333,21 +332,21 @@ Plugin Logger is available for use to track what PluginSystem hooks are being fi
     plugin_logger_redis_path="tcp://redis:6379?database=3"
     ```
 - In your Ubersmith application, go to _Settings_, _Plugins_, _Settings_ and enable Plugin Logger. Go back to _Plugins_ page.
-- Now the logger is enabled and you should see _Go to Logger_ link to access the logger.
+- Now the logger is enabled and you should see the _Go to Logger_ link to access the logger.
 
 #### Log Entry Definitions
 | Key | Value |
 | --- | --- |
 | `datetime` | datetime of log event. |
-| `message` | message is composed of `[event_origin] event_description` |
+| `message` | message is composed of `[event_origin] event_description`. |
 | `uid` | uid represents a single execution flow. For example, if you do a text search with a uid, the logger will display a group of events which transpired in the single execution. |
 | `event` | `hook_type` and `hook_name` related to the event. |
-| `plugin` | `identifier` from the plugin's manifest.json, the plugin's `module_name` and `function` related to the event. |
+| `plugin` | `identifier` value from the plugin's manifest.json, the plugin's `module_name` and `function` related to the event. |
 | `hostname` | For Ubersmith application with multiple web heads, this can act as a supplement to `uid`. |
 
 #### Log Entry Types and Colors
 - A log message with ![#008000](https://placehold.it/15/008000/000000?text=+) `GREEN` background color indicates a successful execution of a plugin function.
-- A log message with ![#f03c15](https://placehold.it/15/f03c15/000000?text=+) `RED` background color indicates a successful execution of a plugin function.
+- A log message with ![#f03c15](https://placehold.it/15/f03c15/000000?text=+) `RED` background color indicates a failed execution of a plugin function.
 - A log from `SDK\Debug` function will have ![#f09623](https://placehold.it/15/f09623/000000?text=+) `ORANGE` borders.
 
 #### Usage
@@ -402,16 +401,16 @@ function client_ticket_list(Parameter\Source\Client $client, Parameter\Plugin $p
 }
 ```
 
-###### View options
+###### View Options
 - Toggle collapsed/expanded view modes with `view collapsed/expanded` button.
 
 ###### Filters
 - You can filter per plugin and/or per usage on left sidebar navigation radio buttons.
 
-###### Text search
+###### Text Search
 - Any text in any log entry is searchable.
 
-###### Clearing the log view
+###### Clearing the Log View
 - You can either use the `Clear Log` button, `ESC` key, and `Command + K` on Mac or `Ctrl + K` on Windows.
 
 
