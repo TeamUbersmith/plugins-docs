@@ -768,4 +768,18 @@ URL encode a string.
 
 **Return value:** `string URL encoded string.`
 
+
+### UbersmithSDK\Util\Pluck
+
+Returns a new array containing only the specified keys
+
+**Parameters:**
+
+| Parameter | Description |
+| --- | --- |
+| `array $array` | The array to pluck the keys from. |
+| `...$keys` | The keys to pluck from the array |
+
+**Return value:** `array a new array containing only the specified keys`
+
 [Go back](../DEVELOPMENT.md)
