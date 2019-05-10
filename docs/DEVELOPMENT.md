@@ -236,13 +236,18 @@ public function convert_amount($amount, Usage\Resource $resource, $to_unit)
 }
 ```
 
-The `fetch` method returns usage data. For example, you may do a cURL request to an external resource to get usage data. In this example we will always return 100 minutes of ticket time.
+The `fetch` method returns usage data. For example, you may do a cURL request to an external resource to get usage data. In this example, we will always return 100 minutes of ticket time.
+
+The system expects this method to return an array of `UbersmithSDK\Usage\Data` instances. Each instance will contain the resource object, the usage amount for the resource, as well as an optional `details` parameter.
+
+The content of `details` can be markdown or html and will be displayed as `Additional details` on invoices as well as in the client portal and client manager.
+
 ```php
 public function fetch(Parameter\Source\Service $service, $resources, $startdate, $enddate)
 {
 	$usage = array();
 	foreach ($resources as $resource) {
-		$usage[] = new Usage\Data($resource, 100);
+		$usage[] = new Usage\Data($resource, 100,'<b>Some more details:</b>');
 	}
 
 	return $usage;
