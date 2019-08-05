@@ -37,19 +37,28 @@ function validate($config) {
 function client_ticket_list(Parameter\Source\Client $client, Parameter\Plugin $plugin)
 {
 	$config = $plugin->config;
+	
+	$limit = $_REQUEST['limit'] ?? $config->limit;
 
 	$tickets = API\Support\Ticket_List(array(
 		'client_id' => $client->clientid,
 		'order_by'  => 'ticket_id',
 		'direction' => 'desc',
-		'limit'     => $config->limit,
+		'limit'     => $limit,
 	));
 
 	if (empty($tickets)) {
 		throw new Error\SDKException(I18nf('No %s found', I18n('tickets')));
 	}
 
-	$output = '
+	$output =
+		GUI\FormStart('client_ticket_form', 'GET') . '
+		<div style="padding: 5px;">' .
+			GUI\Label('limit', I18n('Limit')) . ' ' .
+			GUI\InputText('limit', $limit, ['size' => 3, 'style' => 'margin-bottom: 4px;']) . ' ' .
+			GUI\InputHidden('clientid', $_REQUEST['clientid']) . ' ' .
+			GUI\InputSubmit('client_ticket_submit', 'Submit') . '
+		</div>
 		<table class="table-body" style="width: 100%;">
 			<thead>
 				<tr class="header">
@@ -71,7 +80,8 @@ function client_ticket_list(Parameter\Source\Client $client, Parameter\Plugin $p
 	}
 	$output .= '
 			</tbody>
-		</table>';
+		</table>' .
+		GUI\FormEnd();
 
 	return $output;
 }
