@@ -5,7 +5,6 @@ The following is a list of hooks that have been defined throughout Ubersmith:
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 <!-- https://github.com/thlorenz/doctoc use this tool to update -->
-**Table of Contents**
 
 - [Event hooks](#event-hooks)
   - [Event\Client\AfterCreate](#eventclientaftercreate)
