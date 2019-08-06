@@ -1,13 +1,3 @@
-<!-- START doctoc generated TOC please keep comment here to allow auto update -->
-<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
-**Table of Contents**  *generated with [DocToc](https://github.com/thlorenz/doctoc)*
-
-- [Ubersmith Plugin System](#ubersmith-plugin-system)
-  - [Overview](#overview)
-  - [Plugin development](#plugin-development)
-
-<!-- END doctoc generated TOC please keep comment here to allow auto update -->
-
 # Ubersmith Plugin System
 
 ## Overview
