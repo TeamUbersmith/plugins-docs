@@ -2,7 +2,73 @@
 
 The following is a list of functions that have been defined throughout Ubersmith:
 
-## GUI functions
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+<!-- https://github.com/thlorenz/doctoc use this tool to update -->
+
+- [GUI Functions](#gui-functions)
+  - [UbersmithSDK\GUI\ConfirmLink](#ubersmithsdkguiconfirmlink)
+  - [UbersmithSDK\GUI\ConfirmLinkJS](#ubersmithsdkguiconfirmlinkjs)
+  - [UbersmithSDK\GUI\FormEnd](#ubersmithsdkguiformend)
+  - [UbersmithSDK\GUI\FormStart](#ubersmithsdkguiformstart)
+  - [UbersmithSDK\GUI\Icon](#ubersmithsdkguiicon)
+  - [UbersmithSDK\GUI\Image](#ubersmithsdkguiimage)
+  - [UbersmithSDK\GUI\InputAutocomplete](#ubersmithsdkguiinputautocomplete)
+  - [UbersmithSDK\GUI\InputButton](#ubersmithsdkguiinputbutton)
+  - [UbersmithSDK\GUI\InputCancelClose](#ubersmithsdkguiinputcancelclose)
+  - [UbersmithSDK\GUI\InputCheckAll](#ubersmithsdkguiinputcheckall)
+  - [UbersmithSDK\GUI\InputCheckbox](#ubersmithsdkguiinputcheckbox)
+  - [UbersmithSDK\GUI\InputFile](#ubersmithsdkguiinputfile)
+  - [UbersmithSDK\GUI\InputHidden](#ubersmithsdkguiinputhidden)
+  - [UbersmithSDK\GUI\InputImage](#ubersmithsdkguiinputimage)
+  - [UbersmithSDK\GUI\InputImageButton](#ubersmithsdkguiinputimagebutton)
+  - [UbersmithSDK\GUI\InputPassword](#ubersmithsdkguiinputpassword)
+  - [UbersmithSDK\GUI\InputRadio](#ubersmithsdkguiinputradio)
+  - [UbersmithSDK\GUI\InputSelect](#ubersmithsdkguiinputselect)
+  - [UbersmithSDK\GUI\InputSelectGrouped](#ubersmithsdkguiinputselectgrouped)
+  - [UbersmithSDK\GUI\InputSelectMultipleCheckbox](#ubersmithsdkguiinputselectmultiplecheckbox)
+  - [UbersmithSDK\GUI\InputSubmit](#ubersmithsdkguiinputsubmit)
+  - [UbersmithSDK\GUI\InputText](#ubersmithsdkguiinputtext)
+  - [UbersmithSDK\GUI\InputTextarea](#ubersmithsdkguiinputtextarea)
+  - [UbersmithSDK\GUI\InputYesNo](#ubersmithsdkguiinputyesno)
+  - [UbersmithSDK\GUI\Label](#ubersmithsdkguilabel)
+  - [UbersmithSDK\GUI\Link](#ubersmithsdkguilink)
+  - [UbersmithSDK\GUI\MessageBox](#ubersmithsdkguimessagebox)
+  - [UbersmithSDK\GUI\OddEven](#ubersmithsdkguioddeven)
+  - [UbersmithSDK\GUI\PluginPopupLink](#ubersmithsdkguipluginpopuplink)
+  - [UbersmithSDK\GUI\PopupLink](#ubersmithsdkguipopuplink)
+- [Mail Functions](#mail-functions)
+  - [UbersmithSDK\Mail\EnforceAutoSubmitted](#ubersmithsdkmailenforceautosubmitted)
+  - [UbersmithSDK\Mail\SendAuditedMail](#ubersmithsdkmailsendauditedmail)
+  - [UbersmithSDK\Mail\SendMail](#ubersmithsdkmailsendmail)
+  - [UbersmithSDK\Mail\StoreAuditedMail](#ubersmithsdkmailstoreauditedmail)
+- [Util Functions](#util-functions)
+  - [UbersmithSDK\Util\CSVParse](#ubersmithsdkutilcsvparse)
+  - [UbersmithSDK\Util\CSVRow](#ubersmithsdkutilcsvrow)
+  - [UbersmithSDK\Util\CSVSplit](#ubersmithsdkutilcsvsplit)
+  - [UbersmithSDK\Util\DateDifference](#ubersmithsdkutildatedifference)
+  - [UbersmithSDK\Util\DateFormat](#ubersmithsdkutildateformat)
+  - [UbersmithSDK\Util\DateInterval](#ubersmithsdkutildateinterval)
+  - [UbersmithSDK\Util\FormatCurrency](#ubersmithsdkutilformatcurrency)
+  - [UbersmithSDK\Util\FormatCurrencyRaw](#ubersmithsdkutilformatcurrencyraw)
+  - [UbersmithSDK\Util\FormatDate](#ubersmithsdkutilformatdate)
+  - [UbersmithSDK\Util\FormatDateTime](#ubersmithsdkutilformatdatetime)
+  - [UbersmithSDK\Util\FormatTime](#ubersmithsdkutilformattime)
+  - [UbersmithSDK\Util\HTMLEncode](#ubersmithsdkutilhtmlencode)
+  - [UbersmithSDK\Util\I18n](#ubersmithsdkutili18n)
+  - [UbersmithSDK\Util\I18nf](#ubersmithsdkutili18nf)
+  - [UbersmithSDK\Util\SecondsToTime](#ubersmithsdkutilsecondstotime)
+  - [UbersmithSDK\Util\TimeAgo](#ubersmithsdkutiltimeago)
+  - [UbersmithSDK\Util\Tip](#ubersmithsdkutiltip)
+  - [UbersmithSDK\Util\URLEncode](#ubersmithsdkutilurlencode)
+  - [UbersmithSDK\Util\Pluck](#ubersmithsdkutilpluck)
+- [Debug Functions](#debug-functions)
+  - [UbersmithSDK\Debug\Log](#ubersmithsdkdebuglog)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
+
+## GUI Functions
 
 ### UbersmithSDK\GUI\ConfirmLink
 
@@ -459,7 +525,7 @@ Generate a popup link.
 
 **Return value:** `string Popup link.`
 
-## Mail functions
+## Mail Functions
 
 ### UbersmithSDK\Mail\EnforceAutoSubmitted
 
@@ -520,7 +586,7 @@ Send and store an audited email.
 
 **Return value:** `bool Send email result - array(subject, body) on success or false on error.`
 
-## Util functions
+## Util Functions
 
 ### UbersmithSDK\Util\CSVParse
 
@@ -765,5 +831,20 @@ Returns a new array containing only the specified keys
 | `...$keys` | The keys to pluck from the array |
 
 **Return value:** `array a new array containing only the specified keys`
+
+## Debug Functions
+
+### UbersmithSDK\Debug\Log
+
+For use with Plugin Logger. Log anything from plugin files.
+
+**Parameters:**
+
+| Parameter | Description | Required |
+| --- | --- | --- |
+| `string $message` | Log message. | Yes |
+| `array|object|string $logItem` | string \| array \| object or array of mixed data type. | No |
+
+**Return value:** None. Output will go to [Plugin Logger](../DEVELOPMENT.md#plugin-logger).
 
 [Go back](../DEVELOPMENT.md)
