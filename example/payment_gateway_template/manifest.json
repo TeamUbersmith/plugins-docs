@@ -1,0 +1,30 @@
+{
+	"sdk_version": 1,
+	"name": "Payment Gateway Template",
+	"identifier": "com.ubersmith.payment_gateway_template",
+	"namespace": "UbersmithPlugin\\PaymentGatewayTemplate",
+	"description": "Template for developing a payment gateway plugin.",
+	"version": "1.0",
+	"instance_limit": 1,
+	"modules": {
+		"payment_gateway_template": {
+			"component": "brands",
+			"label": "Brand",
+			"description": ""
+		}
+	},
+	"config_items": {
+		"mode": {
+			"scope": ["module"],
+			"modules": ["payment_gateway_template"],
+			"label": "Mode",
+			"type": "select",
+			"options": {
+				"pass": "Pass",
+				"fail": "Fail"
+			},
+			"default": "pass",
+			"required": true
+		}
+	}
+}
