@@ -2,7 +2,69 @@
 
 The following is a list of functions that have been defined throughout Ubersmith:
 
+## Debug functions
+
+### UbersmithSDK\Debug\Log
+
+Logs to ExecutionLogger for debugging purposes.
+
+**Parameters:**
+
+| Parameter | Description |
+| --- | --- |
+| `string $message` | A message for the log. |
+
+**Return value:** `void`
+
+## Error functions
+
+### UbersmithSDK\Error\IsError
+
+Returns whether a result is an error.
+
+**Parameters:**
+
+| Parameter | Description |
+| --- | --- |
+| `string $result` | Result. |
+
+**Return value:** `bool`
+
 ## GUI functions
+
+### UbersmithSDK\GUI\ConfirmInputButton
+
+Generate a button with a confirmation message.
+
+**Parameters:**
+
+| Parameter | Description |
+| --- | --- |
+| `string $url` | URL where the browser will be forwarded upon confirmation. |
+| `string $name` | Button name. |
+| `string $label` | Button label. |
+| `mixed $message` | The confirmation message to display. |
+| `array $attributes` | Additional button attributes. |
+| `string $id` | Button ID. |
+
+**Return value:** `string Button.`
+
+### UbersmithSDK\GUI\ConfirmInputButtonJS
+
+Generate a button with a confirmation message that will execute JavaScript after confirmation.
+
+**Parameters:**
+
+| Parameter | Description |
+| --- | --- |
+| `string $javascript` | JavaScript that will be executed after confirmation. |
+| `string $name` | Button name. |
+| `string $label` | Button label. |
+| `mixed $message` | The confirmation message to display. |
+| `array $attributes` | Additional button attributes. |
+| `string $id` | Button ID. |
+
+**Return value:** `string Button.`
 
 ### UbersmithSDK\GUI\ConfirmLink
 
@@ -12,9 +74,9 @@ Generate a link with a confirmation message.
 
 | Parameter | Description |
 | --- | --- |
-| `string $url` | Link URL. |
+| `string $url` | URL where the browser will be forwarded upon confirmation. |
 | `string $text` | Link text. |
-| `string $message` | Confirmation message. |
+| `string $message` | The confirmation message to display. |
 | `array $attributes` | Additional link attributes. |
 | `string $id` | Link ID. |
 
@@ -30,7 +92,7 @@ Generate a link with a confirmation message that will execute JavaScript after c
 | --- | --- |
 | `string $javascript` | JavaScript that will be executed after confirmation. |
 | `string $text` | Link text. |
-| `string $message` | Confirmation message. |
+| `string $message` | The confirmation message to display. |
 | `array $attributes` | Additional link attributes. |
 | `string $id` | Link ID. |
 
@@ -103,7 +165,8 @@ Generate an autocomplete input field.
 | `string $value` | Field value. |
 | `string $label` | Field label. |
 | `string $ajax_url` | Ajax URL. |
-| `array $attributes` | Additional field attributes for hidden value field. |
+| `array $attributes` | Additional field attributes. |
+| `array $attributes_hidden_value_field` | Additional field attributes for hidden value field. |
 | `string $id` | Field ID. |
 
 **Return value:** `string Autocomplete input field.`
@@ -136,22 +199,21 @@ Generate a button that closes the current window.
 | `array $attributes` | Additional button attributes. |
 | `string $id` | Button ID. |
 
-**Return value:** `string Button.`
+**Return value:** `string Button that closes the current window.`
 
 ### UbersmithSDK\GUI\InputCheckAll
 
-Generate a check / uncheck all checkbox
+Generate a check all / uncheck all checkbox.
 
 **Parameters:**
 
 | Parameter | Description |
 | --- | --- |
 | `string $name` | Field name. |
-| `string $prefix` | Prefix of checkboxes to check / uncheck. |
 | `array $attributes` | Additional field attributes. |
 | `string $id` | Field ID. |
 
-**Return value:** `string Check / uncheck all checkbox.`
+**Return value:** `string Check all / uncheck all checkbox.`
 
 ### UbersmithSDK\GUI\InputCheckbox
 
@@ -169,6 +231,22 @@ Generate a checkbox.
 
 **Return value:** `string Checkbox.`
 
+### UbersmithSDK\GUI\InputDate
+
+Generate a date selector input field.
+
+**Parameters:**
+
+| Parameter | Description |
+| --- | --- |
+| `string $name` | Field name. |
+| `string $value` | Selected value. |
+| `string $title` | Field Title. |
+| `array $attributes` | Additional field attributes. |
+| `string $id` | Field ID. |
+
+**Return value:** `string Date selector input field.`
+
 ### UbersmithSDK\GUI\InputFile
 
 Generate a file upload input field.
@@ -178,7 +256,6 @@ Generate a file upload input field.
 | Parameter | Description |
 | --- | --- |
 | `string $name` | Field name. |
-| `string $value` | Field value. |
 | `array $attributes` | Additional field attributes. |
 | `string $id` | Field ID. |
 
@@ -209,7 +286,7 @@ Generate an image input field.
 | --- | --- |
 | `string $name` | Field name. |
 | `string $value` | Field value. |
-| `string $image` | Image source. |
+| `string $img_class` | class defining the image. |
 | `array $attributes` | Additional field attributes. |
 | `string $id` | Field ID. |
 
@@ -225,7 +302,7 @@ Generate an image button.
 | --- | --- |
 | `string $name` | Button name. |
 | `string $value` | Button label. |
-| `string $image` | Image source. |
+| `string $img_class` | class defining the image. |
 | `array $attributes` | Additional button attributes. |
 | `string $id` | Button ID. |
 
@@ -307,9 +384,9 @@ Generate a select box with checkboxes.
 | `array $selected` | Values of selected options. |
 | `array $attributes` | Additional field attributes. |
 | `string $id` | Field ID. |
-| `bool $search` | Whether to show search input field. |
+| `bool $enable_search` | Whether to show search input field. |
 
-**Return value:** `string Grouped select box.`
+**Return value:** `string Select box with checkboxes.`
 
 ### UbersmithSDK\GUI\InputSubmit
 
@@ -343,7 +420,7 @@ Generate a text input field.
 
 ### UbersmithSDK\GUI\InputTextarea
 
-Generate a textarea.
+Generate a textarea input field.
 
 **Parameters:**
 
@@ -360,7 +437,7 @@ Generate a textarea.
 
 ### UbersmithSDK\GUI\InputYesNo
 
-Generate yes and no radio buttons.
+Generate yes / no radio buttons.
 
 **Parameters:**
 
@@ -371,7 +448,7 @@ Generate yes and no radio buttons.
 | `array $attributes` | Additional field attributes. |
 | `string $id` | Field ID. |
 
-**Return value:** `string Yes and no radio buttons.`
+**Return value:** `string Yes / no radio buttons.`
 
 ### UbersmithSDK\GUI\Label
 
@@ -420,7 +497,7 @@ Generate a message box.
 
 ### UbersmithSDK\GUI\OddEven
 
-Returns an odd / even class based on whether a table row is odd or even.
+Generate an odd / even class name based on whether a table row is odd or even.
 
 **Return value:** `string Odd / even class name.`
 
@@ -435,6 +512,7 @@ Generate a popup link to another plugin file.
 | `string $plugin` | Plugin. |
 | `string $url` | Popup link URL. |
 | `string $text` | Popup link text. |
+| `string $title` | Popup link title. |
 | `string $target` | Target window name. |
 | `string $details` | Details of popup window. |
 | `array $attributes` | Additional popup link attributes. |
@@ -519,6 +597,124 @@ Send and store an audited email.
 | `bool $auto_footer` | Add auto-footer to email. |
 
 **Return value:** `bool Send email result - array(subject, body) on success or false on error.`
+
+## Payment functions
+
+### UbersmithSDK\Payment\Error
+
+Logs an error and throws an SDKException.
+
+**Parameters:**
+
+| Parameter | Description |
+| --- | --- |
+| `object $plugin` | Plugin. |
+| `string $type` | Type. |
+| `any $error` | Error. |
+
+**Return value:** `void`
+
+### UbersmithSDK\Payment\Log
+
+Logs a message with details.
+
+**Parameters:**
+
+| Parameter | Description |
+| --- | --- |
+| `object $plugin` | Plugin. |
+| `string $type` | Type. |
+| `string $message` | Message. |
+| `any $details` | Details. |
+
+**Return value:** `void`
+
+### UbersmithSDK\Payment\MakeInvoiceIdUnique
+
+Makes an invoice ID unique based on previous payments.
+
+**Parameters:**
+
+| Parameter | Description |
+| --- | --- |
+| `int $invoice_id` | Invoice ID. |
+| `string $payment_gateway_name` | Payment gateway name. |
+
+**Return value:** `string Unique invoice ID.`
+
+## User functions
+
+### UbersmithSDK\User\GetClassId
+
+Returns the user's class ID.
+
+**Return value:** `int Class ID.`
+
+### UbersmithSDK\User\GetClientId
+
+Returns the user's client ID.
+
+**Return value:** `int Client ID.`
+
+### UbersmithSDK\User\GetContactId
+
+Returns the user's contact ID.
+
+**Return value:** `int Contact ID.`
+
+### UbersmithSDK\User\GetEmail
+
+Returns the user's email.
+
+**Return value:** `string Email.`
+
+### UbersmithSDK\User\GetFullName
+
+Returns the user's full name.
+
+**Return value:** `string Full name.`
+
+### UbersmithSDK\User\GetLastLogin
+
+Returns the user's last login.
+
+**Return value:** `int Last login.`
+
+### UbersmithSDK\User\GetUserId
+
+Returns the user's ID.
+
+**Return value:** `int User ID.`
+
+### UbersmithSDK\User\GetUsername
+
+Returns the user's username.
+
+**Return value:** `string Username.`
+
+### UbersmithSDK\User\IsAdmin
+
+Returns whether the user is an admin.
+
+**Return value:** `bool`
+
+### UbersmithSDK\User\IsClient
+
+Returns whether the user is a client.
+
+**Return value:** `bool`
+
+### UbersmithSDK\User\IsLead
+
+Returns whether the user is a lead.
+
+**Return value:** `bool`
+
+### UbersmithSDK\User\IsLoggedIn
+
+Returns whether the user is logged in.
+
+**Return value:** `bool`
 
 ## Util functions
 
@@ -703,6 +899,41 @@ Translate a string containing substitutions using the default locale.
 
 **Return value:** `string Translated string.`
 
+### UbersmithSDK\Util\Pluck
+
+Returns a new array containing only the specified keys.
+
+**Return value:** `array Array containing only the specified keys.`
+
+### UbersmithSDK\Util\PluginBackgroundTaskAdd
+
+Add a background task for a plugin hook.
+
+**Parameters:**
+
+| Parameter | Description |
+| --- | --- |
+| `string $plugin` | Plugin. |
+| `string $hook` | Hook. |
+| `string $description` | Background task description. |
+| `string $owner` | Background task owner. |
+| `string $detail` | Additional details. |
+
+**Return value:** `string Background task process identifier (PID).`
+
+### UbersmithSDK\Util\PluginBackgroundTaskInfo
+
+Get information about a background task for a plugin hook.
+
+**Parameters:**
+
+| Parameter | Description |
+| --- | --- |
+| `string $plugin` | Plugin. |
+| `string $pid` | Background task process identifier (PID). |
+
+**Return value:** `array Background task information.`
+
 ### UbersmithSDK\Util\SecondsToTime
 
 Convert seconds to time.
@@ -724,6 +955,7 @@ Based on a timestamp, determine how long ago it was and return that as a formatt
 | Parameter | Description |
 | --- | --- |
 | `string $timestamp` | Unix timestamp. |
+| `boolean $short` | Shortened version of the time notation (e.g.: hours -> hrs). |
 
 **Return value:** `string Time ago.`
 
@@ -751,19 +983,5 @@ URL encode a string.
 | `string $string` | String to URL encode. |
 
 **Return value:** `string URL encoded string.`
-
-
-### UbersmithSDK\Util\Pluck
-
-Returns a new array containing only the specified keys
-
-**Parameters:**
-
-| Parameter | Description |
-| --- | --- |
-| `array $array` | The array to pluck the keys from. |
-| `...$keys` | The keys to pluck from the array |
-
-**Return value:** `array a new array containing only the specified keys`
 
 [Go back](../DEVELOPMENT.md)

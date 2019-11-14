@@ -15,13 +15,14 @@ A plugin requires a `manifest.json` and `bootstrap.php` file.
 * Any additional files the plugin needs (for example, images).
 
 ## Manifest file
-The manifest file, `manifest.json`, is a JSON file that specifies details about the plugin such as name, version, and other configuration details. For more information about the manifest file, [see Manifest file]().
+The manifest file, `manifest.json`, is a JSON file that specifies details about the plugin such as name, version, and other configuration details. For more information about the manifest file, [see Manifest file](manifest/MANIFEST.md).
 
 Below is our example plugin manifest file:
 ```json
 {
 	"sdk_version": 1,
 	"name": "Client Tickets",
+	"identifier": "com.ubersmith.docs.clienttickets",
 	"namespace": "Docs\\ClientTickets",
 	"description": "Display a list of a client's most recent tickets on the client profile page.",
 	"version": "1.0",
@@ -59,7 +60,7 @@ Below is our example plugin manifest file:
 For more information about the manifest file, see [Manifest file](manifest/MANIFEST.md).
 
 ## Bootstrap file
-The bootstrap file, `bootstrap.php`, is a PHP file the plugin executes first. This file contains functions that implement defined hooks throughout Ubersmith. The bootstrap can also include other PHP files, to divide the code into multiple PHP files.  For more info, [see Bootstrap]().
+The bootstrap file, `bootstrap.php`, is a PHP file the plugin executes first. This file contains functions that implement defined hooks throughout Ubersmith. The bootstrap can also include other PHP files, to divide the code into multiple PHP files.
 
 The bootstrap file requires a namespace:
 ```php
@@ -121,7 +122,7 @@ if (empty($tickets)) {
 ## Hooks
 Various hooks are defined in areas where Ubersmith functionality can be extended. A hook requires a function with an annotation describing the hook you want to implement. For more information about the hooks available for use, see [Hooks](hooks/HOOKS.md).
 
-For our example, we use the `View\Client\Summary` hook to display a new section on the Client Profile page. This is done by using the `client_ticket_list` function with an annotation above it refering to the hook. 
+For our example, we use the `View\Client\Summary` hook to display a new section on the Client Profile page. This is done by using the `client_ticket_list` function with an annotation above it refering to the hook.
 
 Parameters for additional details are also available, such as the respective source (`$client` in this case) and the respective `$plugin`:
 ```php
@@ -187,7 +188,7 @@ return $output;
 ## Datasource
 A datasource is a specialized plugin module whose purpose is to collect usage metrics for defined resources.  Any entity or device can be considered a resource of a datasource.  The definition and it's manner of data retrieval is left entirely up to the author of the plugin.  For example, a datasource can define switch ports as a resource to collect bandwidth bits -OR- an SMTP server as a resource to tally outbound emails.  Usage metrics collected are used by an assigned Service Plan allowing relevant Services to calculate a billable cost.
 
-A datasource requires a class implementing the `UbersmithSDK\Usage\Data\Source` interface as well as some annotations. For more information about the functions available to use, [see Datasources](). 
+A datasource requires a class implementing the `UbersmithSDK\Usage\Data\Source` interface as well as some annotations.
 
 To implement a datasource you need to set a namespace and use Ubersmith SDK packages `Usage` and `Parameter`:
 ```php
