@@ -2,7 +2,7 @@
 
 A plugin is a collection of files, functions, hooks, SDK methods and calls, and Datasources. Plugins reside in a subdirectory under the `plugins/` directory on the Ubersmith server.
 
-To illustrate abilities, we will develop an example plugin. The plugin is called **Client Tickets** and it will add a new section to the Client Profile page to display a list of the client's most recent tickets. You can download the full plugin [here](../example/client_tickets.zip).
+To illustrate abilities, we will develop an example plugin. The plugin is called **Client Tickets** and it will add a new section to the Client Profile page to display a list of the client's most recent tickets. You can download the full plugin [here](../example/client_tickets.zip) or view the source [here](../example/client_tickets).
 
 ## Files
 A plugin requires a `manifest.json` and `bootstrap.php` file.
