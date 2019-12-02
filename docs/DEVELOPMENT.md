@@ -1,6 +1,6 @@
 # Developing a plugin
 
-A plugin is a collection of files, functions, hooks, SDK methods and calls, and Datasources. Plugins reside in a subdirectory under the `plugins/` directory on the Ubersmith server.
+A plugin is a collection of files, functions, hooks, routes, SDK methods and calls, and Datasources. Plugins reside in a subdirectory under the `plugins/` directory on the Ubersmith server.
 
 To illustrate abilities, we will develop an example plugin. The plugin is called **Client Tickets** and it will add a new section to the Client Profile page to display a list of the client's most recent tickets. You can download the full plugin [here](../example/client_tickets.zip) or view the source [here](../example/client_tickets).
 
@@ -183,6 +183,23 @@ $output .= '
 	</table>';
 
 return $output;
+```
+
+## Routes
+Routes are similar to hooks, but are used to control plugin functionality at an entire page level rather than just a section of a page. For more information about the routes available for use, see [Routes](routes/ROUTES.md).
+
+For example, we could use the `@Route View` route to control everything that displays under the plugin view page. The plugin view page can be viewed by going to `Settings -> Plugins`, viewing a plugin, and then clicking `Go to Plugin Home`.
+
+```php
+/**
+ * Route View method
+ *
+ * @Route View
+ */
+function route_view()
+{
+	return '<div>Output</div>';
+}
 ```
 
 ## Datasource
