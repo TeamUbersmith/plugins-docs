@@ -5,7 +5,9 @@ Each plugin requires a manifest JSON file, `manifest.json`, that provides inform
 The following fields are supported in the manifest file:
 
 ## Required
-[sdk_version](SDK.md)
+[sdk_version](SDK_VERSION.md)
+
+[identifier](IDENTIFIER.md)
 
 [name](NAME.md)
 
@@ -22,6 +24,6 @@ The following fields are supported in the manifest file:
 
 [javascript](JAVASCRIPT.md)
 
-[config_items](CONFIG.md)
+[config_items](CONFIG_ITEMS.md)
 
 [Go back](../DEVELOPMENT.md)
