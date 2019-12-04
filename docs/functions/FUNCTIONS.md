@@ -905,35 +905,6 @@ Returns a new array containing only the specified keys.
 
 **Return value:** `array Array containing only the specified keys.`
 
-### UbersmithSDK\Util\PluginBackgroundTaskAdd
-
-Add a background task for a plugin hook.
-
-**Parameters:**
-
-| Parameter | Description |
-| --- | --- |
-| `string $plugin` | Plugin. |
-| `string $hook` | Hook. |
-| `string $description` | Background task description. |
-| `string $owner` | Background task owner. |
-| `string $detail` | Additional details. |
-
-**Return value:** `string Background task process identifier (PID).`
-
-### UbersmithSDK\Util\PluginBackgroundTaskInfo
-
-Get information about a background task for a plugin hook.
-
-**Parameters:**
-
-| Parameter | Description |
-| --- | --- |
-| `string $plugin` | Plugin. |
-| `string $pid` | Background task process identifier (PID). |
-
-**Return value:** `array Background task information.`
-
 ### UbersmithSDK\Util\SecondsToTime
 
 Convert seconds to time.
