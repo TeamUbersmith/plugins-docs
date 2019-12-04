@@ -20,6 +20,8 @@ The following fields are supported in the manifest file:
 ## Optional
 [description](DESCRIPTION.md)
 
+[instance_limit](INSTANCE_LIMIT.md)
+
 [css](CSS.md)
 
 [javascript](JAVASCRIPT.md)
