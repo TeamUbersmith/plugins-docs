@@ -4,6 +4,66 @@ The following is a list of hooks that have been defined throughout Ubersmith:
 
 ## Event hooks
 
+### Event\Billing\AfterCreditApplied
+
+Executed after a credit is applied.
+
+**Parameters:**
+
+| Parameter | Description |
+| --- | --- |
+| `object $credit` | Credit details. |
+| `object $plugin` | Plugin details. |
+| `object $detail` | Additional details. |
+
+### Event\Billing\AfterCreditCreate
+
+Executed after a credit is created.
+
+**Parameters:**
+
+| Parameter | Description |
+| --- | --- |
+| `object $credit` | Credit details. |
+| `object $plugin` | Plugin details. |
+| `object $detail` | Additional details. |
+
+### Event\Billing\AfterInvoiceCreate
+
+Executed after an invoice is created.
+
+**Parameters:**
+
+| Parameter | Description |
+| --- | --- |
+| `object $invoice` | Invoice details. |
+| `object $plugin` | Plugin details. |
+| `object $detail` | Additional details. |
+
+### Event\Billing\AfterPaymentCreate
+
+Executed after a payment is created.
+
+**Parameters:**
+
+| Parameter | Description |
+| --- | --- |
+| `object $payment` | Payment details. |
+| `object $plugin` | Plugin details. |
+| `object $detail` | Additional details. |
+
+### Event\Billing\AfterRefundCreate
+
+Executed after a refund is created.
+
+**Parameters:**
+
+| Parameter | Description |
+| --- | --- |
+| `object $refund` | Refund details. |
+| `object $plugin` | Plugin details. |
+| `object $detail` | Additional details. |
+
 ### Event\Client\AfterCreate
 
 Executed after a client is created.
@@ -97,6 +157,54 @@ Executed before a client is reactivated.
 | Parameter | Description |
 | --- | --- |
 | `object $client` | Client details. |
+| `object $plugin` | Plugin details. |
+| `object $detail` | Additional details. |
+
+### Event\Config\AfterServicePlanCreate
+
+Executed after a service plan is created.
+
+**Parameters:**
+
+| Parameter | Description |
+| --- | --- |
+| `object $service_plan` | Service plan details. |
+| `object $plugin` | Plugin details. |
+| `object $detail` | Additional details. |
+
+### Event\Config\AfterServicePlanEdit
+
+Executed after a service plan is edited.
+
+**Parameters:**
+
+| Parameter | Description |
+| --- | --- |
+| `object $service_plan` | Service plan details. |
+| `object $plugin` | Plugin details. |
+| `object $detail` | Additional details. |
+
+### Event\Config\AfterTaxRateCreate
+
+Executed after a tax rate is created.
+
+**Parameters:**
+
+| Parameter | Description |
+| --- | --- |
+| `object $tax_rate` | Tax rate details. |
+| `object $plugin` | Plugin details. |
+| `object $detail` | Additional details. |
+
+### Event\Config\AfterTaxRateEdit
+
+Executed after a tax rate is edited.
+
+**Parameters:**
+
+| Parameter | Description |
+| --- | --- |
+| `object $tax_rate` | Tax rate details. |
 | `object $plugin` | Plugin details. |
 | `object $detail` | Additional details. |
 
@@ -229,6 +337,17 @@ Executed before a device is edited.
 | Parameter | Description |
 | --- | --- |
 | `object $device` | Device details. |
+| `object $plugin` | Plugin details. |
+| `object $detail` | Additional details. |
+
+### Event\General\Cron
+
+Executed during Ubersmith's main cron job.
+
+**Parameters:**
+
+| Parameter | Description |
+| --- | --- |
 | `object $plugin` | Plugin details. |
 | `object $detail` | Additional details. |
 
@@ -448,6 +567,18 @@ Executed before a service is unsuspended.
 | `object $plugin` | Plugin details. |
 | `object $detail` | Additional details. |
 
+### Event\Service\NightlyCron
+
+Executed during the nightly cron.
+
+**Parameters:**
+
+| Parameter | Description |
+| --- | --- |
+| `object $service` | Service details. |
+| `object $plugin` | Plugin details. |
+| `object $detail` | Additional details. |
+
 ### Event\Service\Provision
 
 Executed when a service is provisioned.
@@ -516,6 +647,27 @@ Executed on the view device page, allowing additional boxes to be added.
 | Parameter | Description |
 | --- | --- |
 | `object $device` | Device details. |
+| `object $plugin` | Plugin details. |
+
+### View\General\Execute
+
+Executed when viewing the view plugin page.
+
+**Parameters:**
+
+| Parameter | Description |
+| --- | --- |
+| `object $plugin` | Plugin details. |
+
+### View\Order\Action
+
+Allows a new order action to be added to an order queue.
+
+**Parameters:**
+
+| Parameter | Description |
+| --- | --- |
+| `object $order` | Order details. |
 | `object $plugin` | Plugin details. |
 
 ### View\Order\Summary

@@ -598,6 +598,50 @@ Send and store an audited email.
 
 **Return value:** `bool Send email result - array(subject, body) on success or false on error.`
 
+## Payment functions
+
+### UbersmithSDK\Payment\Error
+
+Logs an error and throws an SDKException.
+
+**Parameters:**
+
+| Parameter | Description |
+| --- | --- |
+| `object $plugin` | Plugin. |
+| `string $type` | Type. |
+| `any $error` | Error. |
+
+**Return value:** `void`
+
+### UbersmithSDK\Payment\Log
+
+Logs a message with details.
+
+**Parameters:**
+
+| Parameter | Description |
+| --- | --- |
+| `object $plugin` | Plugin. |
+| `string $type` | Type. |
+| `string $message` | Message. |
+| `any $details` | Details. |
+
+**Return value:** `void`
+
+### UbersmithSDK\Payment\MakeInvoiceIdUnique
+
+Makes an invoice ID unique based on previous payments.
+
+**Parameters:**
+
+| Parameter | Description |
+| --- | --- |
+| `int $invoice_id` | Invoice ID. |
+| `string $payment_gateway_name` | Payment gateway name. |
+
+**Return value:** `string Unique invoice ID.`
+
 ## User functions
 
 ### UbersmithSDK\User\GetClassId
