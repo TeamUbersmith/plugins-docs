@@ -1,6 +1,6 @@
 <?php
 
-namespace UbersmithPlugin\PaymentGatewayTemplate;
+namespace PaymentGatewayTemplate;
 
 use UbersmithSDK\Payment\Transaction;
 use UbersmithSDK\Payment\Detail;
@@ -12,9 +12,8 @@ use function UbersmithSDK\Payment\Error as Error;
 
 /**
  * Payment Gateway Template credit card class.
- *
- * @Payment\Gateway\CreditCard
  */
+#[\UbersmithSDK\Attribute\Payment\Gateway\CreditCard]
 class CreditCard implements Transaction\CreditCard
 {
 	private $plugin;

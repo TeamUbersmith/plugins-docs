@@ -1,15 +1,15 @@
 <?php
 
-namespace Docs\ClientTickets;
+namespace DemoClientTickets;
 
+use UbersmithSDK\Attribute\UsageDataSource;
+use UbersmithSDK\Attribute\Label;
 use UbersmithSDK\Usage;
 use UbersmithSDK\Parameter;
 
-/**
- * @UsageDatasource client_tickets_usage_datasource
- * @label Client Tickets Usage Datasource
- */
-class UsageDatasource implements Usage\Data\Source
+#[Label('Client Tickets Usage Datasource')]
+#[UsageDataSource('client_tickets_usage_datasource')]
+class TicketUsageDatasource implements Usage\Data\Source
 {
 	private $plugin;
 
@@ -26,14 +26,14 @@ class UsageDatasource implements Usage\Data\Source
 	public function get_supported_resources()
 	{
 		return array(
-			new Usage\DefaultResource('ticket_time', 'Ticket Time', array(
+			new Usage\TieredResource('ticket_time', 'Ticket Time', array(
 				'min' => 'minutes',
 				'hr'  => 'hours',
 			)),
 		);
 	}
 
-	public function convert_amount($amount, Usage\Resource $resource, $to_unit)
+	public function convert_amount($amount, Usage\UsageResource $resource, $to_unit)
 	{
 		if ($to_unit == 'hr') {
 			$amount = $amount / 60;

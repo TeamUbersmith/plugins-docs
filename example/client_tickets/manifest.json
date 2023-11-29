@@ -2,7 +2,7 @@
 	"sdk_version": 1,
 	"name": "Client Tickets",
 	"identifier": "com.ubersmith.docs.clienttickets",
-	"namespace": "Docs\\ClientTickets",
+	"namespace": "DemoClientTickets",
 	"description": "Display a list of a client's most recent tickets on the client profile page.",
 	"version": "1.0",
 	"modules": {
@@ -24,13 +24,6 @@
 			"label": "Limit",
 			"type": "text",
 			"default": 10
-		},
-		"usage": {
-			"scope": ["module", "entity"],
-			"modules": ["client_tickets_usage_datasource"],
-			"label": "Usage",
-			"type": "text",
-			"default": 0
 		}
 	}
 }

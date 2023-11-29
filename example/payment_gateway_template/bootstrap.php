@@ -1,6 +1,6 @@
 <?php
 
-namespace UbersmithPlugin\PaymentGatewayTemplate;
+namespace PaymentGatewayTemplate;
 
 require_once 'transaction/class.credit_card.php';
 require_once 'transaction/class.ach.php';
