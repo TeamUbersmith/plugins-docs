@@ -82,7 +82,8 @@ C(100);
 
 For our example we will be utilizing the **API**, **Error**, **GUI**, **Parameter**, and **Util** functions as well as using aliases for a few commonly used functions:
 ```php
-use UbersmithSDK\Attribute\Hook
+use UbersmithSDK\Attribute\Hook;
+use UbersmithSDK\Attribute\Config;
 use UbersmithSDK\API;
 use UbersmithSDK\Error;
 use UbersmithSDK\GUI;
