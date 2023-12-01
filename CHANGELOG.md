@@ -16,7 +16,7 @@ Any custom plugins implementing a `UsageDataSource`.
 **Action Required:**\
 In your plugin code, references to `UbersmithSDK\Usage\Resource` should be replace with `UbersmithSDK\Usage\UsageResource`.
 
-Typical usage would be in the `convert_amount` method implemented by your Datasrouce Class
+Typical usage would be in the `convert_amount` method implemented by your Datasource Class
 ```php
 //Before
 public function convert_amount($amount, \UbersmithSDK\Usage\Resource $resource, $to_unit)
