@@ -647,6 +647,7 @@ This includes:
 - Ubersmith core types: e.g. 'check', 'wire' and 'cash'.
 - Payment Gateways: e.g. 'paypal'
 - Custom Payment Types
+
 **Parameters:**
 | Type | Name | Description |
 | --- | --- | --- |
@@ -742,6 +743,7 @@ Returns the user's username.
 
 Returns whether the user has access to the Brand Id passed as parameter.
 If Null, check against the current Brand in the Users's session.
+
 **Parameters:**
 | Type | Name | Description |
 | --- | --- | --- |
@@ -884,6 +886,7 @@ Generate a timestamp based on a timestamp and an interval.
 Adds 'success' bool and error msg to the response.
 If $error_msg is empty, success = true is used.
 If $error_msg is NOT empty, success = false is used and the message is added under the key 'error_msg'.
+
 **Parameters:**
 | Type | Name | Description |
 | --- | --- | --- |
@@ -1057,6 +1060,7 @@ Convert seconds to time.
 Convert string representing a date to a timestamp.
 Can be used to convert inputs from UbersmithSDK\GUI\InputDate and UbersmithSDK\GUI\InputDateTime
 back to a timestamp.
+
 **Parameters:**
 | Type | Name | Description |
 | --- | --- | --- |
