@@ -111,7 +111,6 @@ Payment
 
 User
 - `UbersmithSDK\User\AccessDenied`
-- `UbersmithSDK\User\FetchUserPreferences`
 - `UbersmithSDK\User\HasBrandAccess`
 - `UbersmithSDK\User\HasClientManagerAccess`
 - `UbersmithSDK\User\HasDeviceManagerAccess`

@@ -540,7 +540,7 @@ Parse an email address to get it's parts.
 
 ### UbersmithSDK\Mail\SendAuditedMail
 
-Send an audited email.
+Send an audited email. All contacts with 'Audit Account' enabled will receive a copy.
 
 **Parameters:**
 | Type | Name | Description |
@@ -557,7 +557,7 @@ Send an audited email.
 
 ### UbersmithSDK\Mail\SendMail
 
-Send an email.
+Send an email. This email will not be added to the mail log. See "Store*" email version for this. I.E. `StoreAuditedMail`
 
 **Parameters:**
 | Type | Name | Description |
@@ -689,21 +689,6 @@ Makes an invoice ID unique based on previous payments.
 Returns action denying user access to requested resource
 
 **Return value:** `void` 
-
-### UbersmithSDK\User\FetchUserPreferences
-
-Fetch a user preferences.
-
-**Parameters:**
-| Type | Name | Description |
-| --- | --- | --- |
-| `string` | `$prefitem` | The preference item name to fetch. |
-| `string` | `$id` | (optional) The user Id. Default: Current user on session. |
-| `mixed` | `$default` | (optional) The default preference item value to return if not set. Default: null. |
-| `string` | `$brand` | (optional) The brand id from where the preference item should be fetched. Default: Current user's active brand. |
-| `bool` | `$use_default_brand` | (optional) Default: true<br>true: When not found in the targeted brand, search will fallback to the default brand.<br>false: When not found, search will not fallback to the default brand. |
-
-**Return value:** `mixed` 
 
 ### UbersmithSDK\User\GetClassId
 
@@ -947,7 +932,7 @@ Format a timestamp to string representation of the date.
 
 ### UbersmithSDK\Util\FormatDateTime
 
-Format a date and time.
+Format a timestamp to a date and time as a string.
 
 **Parameters:**
 | Type | Name | Description |
@@ -960,7 +945,7 @@ Format a date and time.
 
 ### UbersmithSDK\Util\FormatTime
 
-Format a timestamp to only its time as string.
+Format a timestamp to its time as a string.
 
 **Parameters:**
 | Type | Name | Description |
@@ -1070,7 +1055,7 @@ Convert seconds to time.
 ### UbersmithSDK\Util\StringDateToTimestamp
 
 Convert string representing a date to a timestamp.
-Can be use to convert inputs from UbersmithSDK\GUI\InputDate and UbersmithSDK\GUI\InputDateTime
+Can be used to convert inputs from UbersmithSDK\GUI\InputDate and UbersmithSDK\GUI\InputDateTime
 back to a timestamp.
 **Parameters:**
 | Type | Name | Description |
