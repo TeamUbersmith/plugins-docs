@@ -23,7 +23,7 @@ The bootstrap file will need to at least require the payment type classes discus
 ```php
 <?php
 
-namespace UbersmithPlugin\PaymentGatewayTemplate;
+namespace PaymentGatewayTemplate;
 
 require_once 'transaction/class.credit_card.php';
 require_once 'transaction/class.ach.php';
@@ -40,16 +40,15 @@ When developing a payment gateway plugin you will need to decide which payment t
 ```php
 <?php
 
-namespace UbersmithPlugin\PaymentGatewayTemplate;
+namespace PaymentGatewayTemplate;
 
 use UbersmithSDK\Payment\Transaction;
 use UbersmithSDK\Payment\Detail;
 
 /**
  * Payment Gateway Template credit card class.
- *
- * @Payment\Gateway\CreditCard
  */
+#[\UbersmithSDK\Attribute\Payment\Gateway\CreditCard]
 class CreditCard implements Transaction\CreditCard
 {
 	/**
@@ -164,16 +163,15 @@ class CreditCard implements Transaction\CreditCard
 ```php
 <?php
 
-namespace UbersmithPlugin\PaymentGatewayTemplate;
+namespace PaymentGatewayTemplate;
 
 use UbersmithSDK\Payment\Transaction;
 use UbersmithSDK\Payment\Detail;
 
 /**
  * Payment Gateway Template ACH class.
- *
- * @Payment\Gateway\ACH
  */
+#[\UbersmithSDK\Attribute\Payment\Gateway\ACH]
 class ACH implements Transaction\ACH
 {
 	/**
@@ -249,7 +247,7 @@ class ACH implements Transaction\ACH
 ```php
 <?php
 
-namespace UbersmithPlugin\PaymentGatewayTemplate;
+namespace PaymentGatewayTemplate;
 
 use UbersmithSDK\Payment\Transaction;
 use UbersmithSDK\Payment\Detail;
@@ -259,7 +257,8 @@ use UbersmithSDK\Payment\Detail;
  *
  * @Payment\Gateway\IPN
  */
-class IPN implements Transaction\IPN
+#[\UbersmithSDK\Attribute\Payment\Gateway\IPN]
+class MyIPN implements Transaction\IPN
 {
 	/**
 	 * URL to send IPN requests to.

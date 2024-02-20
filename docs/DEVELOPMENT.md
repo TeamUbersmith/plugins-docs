@@ -23,7 +23,7 @@ Below is our example plugin manifest file:
 	"sdk_version": 1,
 	"name": "Client Tickets",
 	"identifier": "com.ubersmith.docs.clienttickets",
-	"namespace": "Docs\\ClientTickets",
+	"namespace": "DemoClientTickets",
 	"description": "Display a list of a client's most recent tickets on the client profile page.",
 	"version": "1.0",
 	"modules": {
@@ -45,13 +45,6 @@ Below is our example plugin manifest file:
 			"label": "Limit",
 			"type": "text",
 			"default": 10
-		},
-		"usage": {
-			"scope": ["module", "entity"],
-			"modules": ["client_tickets_usage_datasource"],
-			"label": "Usage",
-			"type": "text",
-			"default": 0
 		}
 	}
 }
@@ -89,6 +82,8 @@ C(100);
 
 For our example we will be utilizing the **API**, **Error**, **GUI**, **Parameter**, and **Util** functions as well as using aliases for a few commonly used functions:
 ```php
+use UbersmithSDK\Attribute\Hook;
+use UbersmithSDK\Attribute\Config;
 use UbersmithSDK\API;
 use UbersmithSDK\Error;
 use UbersmithSDK\GUI;
@@ -115,22 +110,25 @@ $tickets = API\Support\Ticket_List(array(
 ));
 
 if (empty($tickets)) {
-	Error\Exception(I18nf('No %s found', I18n('tickets')));
+	throw new Error\SDKException(I18nf('No %s found', I18n('tickets')));
 }
 ```
 
 ## Hooks
-Various hooks are defined in areas where Ubersmith functionality can be extended. A hook requires a function with an annotation describing the hook you want to implement. For more information about the hooks available for use, see [Hooks](hooks/HOOKS.md).
+During the execution of a request in Ubersmith, various hooks are triggered to allow plugins to intervene and add their own logic. These hooks are executed synchronously, ensuring that subscribers can influence the flow of the application in real-time.
 
-For our example, we use the `View\Client\Summary` hook to display a new section on the Client Profile page. This is done by using the `client_ticket_list` function with an annotation above it refering to the hook.
+**[Complete list of Hooks](hooks/HOOKS.md)**
+
+To subscribe to a hook, a function must implement the PHP attribute `UbersmithSDK\Attribute\Hook` and provide the hook's name.
+
+For our example, we use the [`View\Client\Summary`](hooks/HOOKS.md#viewclientsummary) hook to display a new section on the Client Profile page.
 
 Parameters for additional details are also available, such as the respective source (`$client` in this case) and the respective `$plugin`:
 ```php
 /**
  * Client Profile Ticket List
- *
- * @Hook View\Client\Summary
  */
+#[Hook('View\Client\Summary')]
 function client_ticket_list(Parameter\Source\Client $client, Parameter\Plugin $plugin)
 {
 
@@ -141,9 +139,8 @@ A validation hook is added to validate config items. This hook is executed when 
 ```php
 /**
  * Config Validation
- *
- * @Config Validate
  */
+#[Config('Validate')]
 function validate($config) {
 	$limit = $config['limit'];
 	if (!is_numeric($limit) || $limit <= 0 || $limit > 25) {
@@ -191,11 +188,9 @@ Routes are similar to hooks, but are used to control plugin functionality at an 
 For example, we could use the `@Route View` route to control everything that displays under the plugin view page. The plugin view page can be viewed by going to `Settings -> Plugins`, viewing a plugin, and then clicking `Go to Plugin Home`.
 
 ```php
-/**
- * Route View method
- *
- * @Route View
- */
+use UbersmithSDK\Attribute\Route;
+
+#[Route('View')]
 function route_view()
 {
 	return '<div>Output</div>';
@@ -205,7 +200,7 @@ function route_view()
 ## Datasource
 A datasource is a specialized plugin module whose purpose is to collect usage metrics for defined resources.  Any entity or device can be considered a resource of a datasource.  The definition and it's manner of data retrieval is left entirely up to the author of the plugin.  For example, a datasource can define switch ports as a resource to collect bandwidth bits -OR- an SMTP server as a resource to tally outbound emails.  Usage metrics collected are used by an assigned Service Plan allowing relevant Services to calculate a billable cost.
 
-A datasource requires a class implementing the `UbersmithSDK\Usage\Data\Source` interface as well as some annotations.
+A datasource requires a class implementing the `UbersmithSDK\Usage\Data\Source` interface as well as some Ubersmith SDK attributes.
 
 To implement a datasource you need to set a namespace and use Ubersmith SDK packages `Usage` and `Parameter`:
 ```php
@@ -215,36 +210,39 @@ use UbersmithSDK\Usage;
 use UbersmithSDK\Parameter;
 ```
 
-We will setup the class with the  `@UsageDatasource` annotation, which means implementing a datasource with a certain name and `@label` to be displayed in Plugin Settings UI.  The datasource class is required to implement `Usage\Data\Source`.
+We will setup the class with the `UsageDatasource` and `Label` attribute, which means implementing a datasource with a given name and label to be displayed in Plugin Settings UI. The datasource class is required to implement `\UbersmithSDK\Usage\Data\Source`.
 ```php
-/**
- * @UsageDatasource client_tickets_usage_datasource
- * @label Client Tickets Usage Datasource
- */
-class UsageDatasource implements Usage\Data\Source
-{
+use UbersmithSDK\Attribute\Label;
+use UbersmithSDK\Attribute\UsageDataSource;
 
+#[Label('Client Tickets Usage Datasource')]
+#[UsageDataSource('client_tickets_usage_datasource')]
+class UsageDatasource implements \UbersmithSDK\Usage\Data\Source
+{
+	// ...
 }
 ```
 
 Datasources require a few methods to be implemented in order to return relevant information.
 
-The `get_supported_resources` method specifies what [resources](#resource_types) the datasource uses and the units of measure. In this case we have a resource for ticket time with the units `minutes` and `hours`.
+The `get_supported_resources` method specifies what [resources type](#resource-types) the datasource uses and the units of measure. In this case we have a resource for ticket time with the units `minutes` and `hours`.
 ```php
+use UbersmithSDK\Usage\TieredResource;
+
 public function get_supported_resources()
 {
-	return array(
-		new Usage\TieredResource('ticket_time', 'Ticket Time', array(
+	return [
+		new TieredResource('ticket_time', 'Ticket Time', [
 			'min' => 'minutes',
 			'hr'  => 'hours',
-		)),
-	);
+		])
+	];
 }
 ```
 
 The `convert_amount` method specifies how units should be converted. For example, want to specify that 60 minutes should convert to 1 hour.
 ```php
-public function convert_amount($amount, Usage\Resource $resource, $to_unit)
+public function convert_amount($amount, \UbersmithSDK\Usage\UsageResource $resource, $to_unit)
 {
 	if ($to_unit == 'hr') {
 		$amount = $amount / 60;
@@ -288,7 +286,7 @@ Finally, the datasource class will need to be included in the bootstrap file:
 require_once 'class.usage_datasource.php';
 ```
 
-### <a name="abcd"></a> Resource types
+### Resource types
 
 When implementing `get_supported_resources` two types of resources can be returned.
 

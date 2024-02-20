@@ -1,6 +1,6 @@
 <?php
 
-namespace UbersmithPlugin\PaymentGatewayTemplate;
+namespace PaymentGatewayTemplate;
 
 use UbersmithSDK\Payment\Transaction;
 use UbersmithSDK\Payment\Detail;
@@ -12,9 +12,8 @@ use function UbersmithSDK\Payment\Error as Error;
 
 /**
  * Payment Gateway Template ACH class.
- *
- * @Payment\Gateway\ACH
  */
+#[\UbersmithSDK\Attribute\Payment\Gateway\ACH]
 class ACH implements Transaction\ACH
 {
 	private $plugin;

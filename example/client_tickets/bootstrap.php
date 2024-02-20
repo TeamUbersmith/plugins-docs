@@ -1,25 +1,26 @@
 <?php
 
-namespace Docs\ClientTickets;
+namespace DemoClientTickets;
+
+use UbersmithSDK\Attribute\Config;
+use UbersmithSDK\Attribute\Hook;
 
 use UbersmithSDK\API;
 use UbersmithSDK\Error;
 use UbersmithSDK\GUI;
 use UbersmithSDK\Parameter;
-use UbersmithSDK\Util;
 
 use function UbersmithSDK\Util\FormatDateTime as DT;
 use function UbersmithSDK\Util\I18n as I18n;
 use function UbersmithSDK\Util\I18nf as I18nf;
 
 // Datasource
-require_once 'class.usage_datasource.php';
+require_once 'class.ticket_usage_datasource.php';
 
 /**
  * Config Validation
- *
- * @Config Validate
  */
+#[Config('Validate')]
 function validate($config) {
 	$limit = $config['limit'];
 	if (!is_numeric($limit) || $limit <= 0 || $limit > 25) {
@@ -31,13 +32,11 @@ function validate($config) {
 
 /**
  * Client Profile Ticket List
- *
- * @Hook View\Client\Summary
  */
+#[Hook('View\Client\Summary')]
 function client_ticket_list(Parameter\Source\Client $client, Parameter\Plugin $plugin)
 {
 	$config = $plugin->config;
-	
 	$limit = $_REQUEST['limit'] ?? $config->limit;
 
 	$tickets = API\Support\Ticket_List(array(
@@ -56,7 +55,7 @@ function client_ticket_list(Parameter\Source\Client $client, Parameter\Plugin $p
 		<div style="padding: 5px;">' .
 			GUI\Label('limit', I18n('Limit')) . ' ' .
 			GUI\InputText('limit', $limit, ['size' => 3, 'style' => 'margin-bottom: 4px;']) . ' ' .
-			GUI\InputHidden('clientid', $_REQUEST['clientid']) . ' ' .
+			GUI\InputHidden('clientid', $client->clientid) . ' ' .
 			GUI\InputSubmit('client_ticket_submit', 'Submit') . '
 		</div>
 		<table class="table-body" style="width: 100%;">
