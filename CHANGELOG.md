@@ -8,7 +8,7 @@
 - PHP `Resource` is a soft reserved word which was used to defined an Interface in the plugin system.
 It has been remove in this major version.
 
-`UbersmithSDK\Usage\Resource` has been rename to `UbersmithSDK\Usage\UsageResource`.
+`UbersmithSDK\Usage\Resource` has been renamed to `UbersmithSDK\Usage\UsageResource`.
 
 **Affected Plugins:**\
 Any custom plugins implementing a `UsageDataSource`.
