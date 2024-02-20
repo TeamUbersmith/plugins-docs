@@ -32,7 +32,7 @@ public function convert_amount($amount, \UbersmithSDK\Usage\UsageResource $resou
 ```
 
 ## Deprecated Changes
-- View Hook name `View\General\Execute` has been rename to just `View`. Using `View\General\Execute` is now deprecated and will will be remove in a future version.
+- View Hook name `View\General\Execute` has been renamed to `View`. Using `View\General\Execute` is now deprecated and will be removed in a future version.
 
 ## New Features
 - PHP Attributes are now supported and are the encouraged way to use the Plugin System annotations.
