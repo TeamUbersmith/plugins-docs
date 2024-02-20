@@ -2,7 +2,7 @@
 
 # 5.0
 > [!WARNING]
-> The plugin system have backward incompatible changes with Ubersmith version `4.x.x`
+> The plugin system in 5.x.x has backward incompatible changes with Ubersmith version `4.x.x`
 
 ## Breaking Changes
 - PHP `Resource` is a soft reserved word which was used to defined an Interface in the plugin system.
