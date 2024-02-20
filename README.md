@@ -1,6 +1,3 @@
-> [!WARNING]
-> DRAFT Documentation for 5.0.0
-
 # Ubersmith Plugin System
 
 ## Overview
