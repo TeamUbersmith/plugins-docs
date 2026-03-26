@@ -1,4 +1,4 @@
-# Transition from DocBlock annotations to PHP attribtues
+# Transition from DocBlock annotations to PHP attributes
 Starting with Ubersmith version 5.0.0, the plugin system will transition from DocBlock annotations to PHP attributes.
 
 Existing plugin annotations before version 5.0.0 will still be supported but new annotations will only be added as PHP attributes.
@@ -7,6 +7,20 @@ Existing plugin annotations before version 5.0.0 will still be supported but new
 > Mixed usage of UbersmithSDK annotations declared using DocBlock and Attributes on the same function is not supported. Only attributes will be recognized.
 
 Transition should be simple as only the DocBlock part needs to be replaced and none of the actual code logic.
+
+## Table of contents
+- [`@Config`](#config)
+- [`@Config Validate`](#config-validate)
+- [`@Schedule`](#schedule)
+- [`@Hook`](#hook)
+- [`@Label`](#label)
+- [`@Property Interactive`](#property-interactive)
+- [`@Property Reprocess`](#property-reprocess)
+- [`@Payment\Gateway\ACH`](#paymentgatewayach)
+- [`@Payment\Gateway\CreditCard`](#paymentgatewaycreditcard)
+- [`@Payment\Gateway\IPN`](#paymentgatewayipn)
+- [`@Route`](#route)
+- [`@UsageDatasource`](#usagedatasource)
 
 ## `@Config`
 Before

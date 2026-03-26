@@ -1,4 +1,4 @@
-# Name
+# Identifier
 
 `identifier` is a plain text string that identifies a unique identifier for the plugin.
 
