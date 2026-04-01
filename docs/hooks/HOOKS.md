@@ -260,7 +260,7 @@ Executed before a contact is reactivated.
 
 ### Event\Device\AfterConnectionCreate
 
-Executed after a connection is careted.
+Executed after a connection is created.
 
 **Parameters:**
 
@@ -370,7 +370,7 @@ Executed after an IP assignment is split.
 
 ### Event\Device\AfterInterfaceCreate
 
-Executed after a interface is created.
+Executed after an interface is created.
 
 **Parameters:**
 
@@ -380,7 +380,7 @@ Executed after a interface is created.
 
 ### Event\Device\AfterInterfaceDelete
 
-Executed after a interface is deleted.
+Executed after an interface is deleted.
 
 **Parameters:**
 
@@ -390,7 +390,7 @@ Executed after a interface is deleted.
 
 ### Event\Device\AfterInterfaceEdit
 
-Executed after a interface is edited.
+Executed after an interface is edited.
 
 **Parameters:**
 
@@ -454,7 +454,7 @@ Executed after an order action is skipped.
 
 ### Event\Order\AfterActionUndoSkip
 
-Executed after an order action is revert skipped status.
+Executed after an order action reverts its skipped status.
 
 **Parameters:**
 
@@ -524,7 +524,7 @@ Executed before an order action is skipped.
 
 ### Event\Order\BeforeActionUndoSkip
 
-Executed before an order action is revert skipped status.
+Executed before an order action reverts its skipped status.
 
 **Parameters:**
 

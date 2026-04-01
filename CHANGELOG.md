@@ -1,6 +1,6 @@
 # Release notes
 
-# 5.0
+## 5.0
 > [!WARNING]
 > The plugin system in 5.x.x has backward incompatible changes with Ubersmith version `4.x.x`
 
@@ -97,19 +97,19 @@ public function convert_amount($amount, \UbersmithSDK\Usage\UsageResource $resou
 - `Event\Order\AfterActionProcess`
 
 ## New UbersmithSDK functions
-GUI
+### GUI
 - `UbersmithSDK\GUI\InputDateTime`
 
-Mail
+### Mail
 - `UbersmithSDK\Mail\ParseEmailAddress`
 
-Payment
+### Payment
 - `UbersmithSDK\Payment\GetAccountCreditPaymentTypes`
 - `UbersmithSDK\Payment\GetCustomPaymentTypes`
 - `UbersmithSDK\Payment\GetGatewayPaymentTypes`
 - `UbersmithSDK\Payment\GetReceivedPaymentTypes`
 
-User
+### User
 - `UbersmithSDK\User\AccessDenied`
 - `UbersmithSDK\User\HasBrandAccess`
 - `UbersmithSDK\User\HasClientManagerAccess`
@@ -118,10 +118,10 @@ User
 - `UbersmithSDK\User\HasReportManagerAccess`
 - `UbersmithSDK\User\HasSalesManagerAccess`
 
-Util
+### Util
 - `UbersmithSDK\Util\GetPercentageColor`
 - `UbersmithSDK\Util\GetStripedBgColor`
 - `UbersmithSDK\Util\StringDateToTimestamp`
 
-# 4.2
-Plugin System initial realease.
+## 4.2
+Plugin System initial release.

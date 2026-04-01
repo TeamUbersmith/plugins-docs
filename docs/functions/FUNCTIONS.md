@@ -529,7 +529,7 @@ Returns whether the system enforces RFC 3834 compliance.
 
 ### UbersmithSDK\Mail\ParseEmailAddress
 
-Parse an email address to get it's parts.
+Parse an email address to get its parts.
 
 **Parameters:**
 | Type | Name | Description |
@@ -1023,7 +1023,7 @@ Translate a string containing substitutions using the default locale.
 
 ### UbersmithSDK\Util\ParseEmailAddress
 
-Parse an email address to get it's parts.
+Parse an email address to get its parts.
 
 **Parameters:**
 | Type | Name | Description |

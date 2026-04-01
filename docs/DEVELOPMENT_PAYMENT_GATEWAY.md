@@ -2,6 +2,20 @@
 
 A payment gateway plugin uses a similar format to a standard plugin and therefore you should first be familiar with the process of a developing a standard plugin, [see Developing a plugin](DEVELOPMENT.md).
 
+## Table of contents
+- [Template](#template)
+- [Files](#files)
+- [Manifest file](#manifest-file)
+- [Bootstrap file](#bootstrap-file)
+- [Payment type classes](#payment-type-classes)
+  - [Credit Card](#credit-card)
+  - [Electronic Funds Transfer (ACH)](#electronic-funds-transfer-ach)
+  - [Instant Payment Notification (IPN)](#instant-payment-notification-ipn)
+- [Details](#details)
+- [Successful transaction](#successful-transaction)
+- [Failed transaction](#failed-transaction)
+- [Logging](#logging)
+
 ## Template
 You can download a full template payment gateway plugin [here](../example/payment_gateway_template.zip) or view the source [here](../example/payment_gateway_template).
 

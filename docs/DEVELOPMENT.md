@@ -4,6 +4,17 @@ A plugin is a collection of files, functions, hooks, routes, SDK methods and cal
 
 To illustrate abilities, we will develop an example plugin. The plugin is called **Client Tickets** and it will add a new section to the Client Profile page to display a list of the client's most recent tickets. You can download the full plugin [here](../example/client_tickets.zip) or view the source [here](../example/client_tickets).
 
+## Table of contents
+- [Files](#files)
+- [Manifest file](#manifest-file)
+- [Bootstrap file](#bootstrap-file)
+- [SDK Functions](#sdk-functions)
+- [SDK API](#sdk-api)
+- [Hooks](#hooks)
+- [Routes](#routes)
+- [Datasource](#datasource)
+  - [Resource types](#resource-types)
+
 ## Files
 A plugin requires a `manifest.json` and `bootstrap.php` file.
 
