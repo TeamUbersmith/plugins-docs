@@ -198,7 +198,14 @@ Routes are similar to hooks, but are used to control plugin functionality at an 
 
 For example, we could use the `@Route View` route to control everything that displays under the plugin view page. The plugin view page can be viewed by going to `Settings -> Plugins`, viewing a plugin, and then clicking `Go to Plugin Home`.
 
+> [!IMPORTANT]
+> Like hooks, a route function is only discovered if it is declared inside your plugin's own namespace (the same `namespace` declared for the rest of your plugin, e.g. `Docs\ClientTickets` in this guide) and is reachable from your `bootstrap.php` file's own `require`/`include` chain. A function left in the global namespace, or defined in a file `bootstrap.php` never loads, will never be found, regardless of which attribute is applied to it.
+>
+> `@Route View` requires a `"component": "brands"` module in the manifest - this guide's manifest already declares one, `client_tickets_brands` (see [Manifest file](#manifest-file)) - with an instance of that module created and attached to a brand under `Settings -> Plugins`. The plugin view page looks up plugins by brand, so without that module instance your plugin is never found for this page, and this function never runs.
+
 ```php
+namespace Docs\ClientTickets;
+
 use UbersmithSDK\Attribute\Route;
 
 #[Route('View')]
