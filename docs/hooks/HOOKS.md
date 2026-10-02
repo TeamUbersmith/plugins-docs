@@ -6,6 +6,9 @@ All functions using a hook can be defined with the parameter `\UbersmithSDK\Para
 
 Functions may define other parameters that are specific to each hook. See their respective parameters to know which one are available.
 
+> [!IMPORTANT]
+> A hook function is only discovered if it is declared inside your plugin's own namespace (the same `namespace` your plugin's other code uses) and is reachable from your `bootstrap.php` file's own `require`/`include` chain. A function left in the global namespace, or defined in a file `bootstrap.php` never loads, will never be found, regardless of which attribute is applied to it. See [Hooks](../DEVELOPMENT.md#hooks) for a complete example.
+
 ## Event hooks
 
 ### Event\Billing\AfterCreditApplied
