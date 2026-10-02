@@ -11,6 +11,9 @@ The following is a list of routes that have been defined throughout Ubersmith:
 
 Executed when viewing the view plugin page.
 
+> [!IMPORTANT]
+> Namespace and reachability aren't the only requirement — the plugin also needs an active module instance for this page before the route will ever run. Add a module with `"component": "brands"` to your `manifest.json` (see the [example manifest](../DEVELOPMENT.md#manifest-file)), then go to `Settings -> Plugins`, edit the plugin, and create an instance of that module attached to the brand you're testing with. Without that, the plugin is never even found when the view page is loaded, regardless of which attribute is applied or how correctly the function is namespaced.
+
 **Parameters:**
 
 | Parameter | Description |

@@ -200,6 +200,8 @@ For example, we could use the `@Route View` route to control everything that dis
 
 > [!IMPORTANT]
 > Like hooks, a route function is only discovered if it is declared inside your plugin's own namespace (the same `namespace` declared for the rest of your plugin, e.g. `Docs\ClientTickets` in this guide) and is reachable from your `bootstrap.php` file's own `require`/`include` chain. A function left in the global namespace, or defined in a file `bootstrap.php` never loads, will never be found, regardless of which attribute is applied to it.
+>
+> `@Route View` also requires an active module instance before it will ever run, independent of namespacing. This guide's manifest already declares `client_tickets_brands` as a `"component": "brands"` module (see [Manifest file](#manifest-file)) - an instance of that module still needs to be created and attached to a brand under `Settings -> Plugins` before the view page will call this function.
 
 ```php
 namespace Docs\ClientTickets;
